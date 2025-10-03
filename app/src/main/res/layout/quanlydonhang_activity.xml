@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <Toolbar
+        android:id="@+id/tb_quanlydonhang"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:title="Quản lý đơn hàng"
+        android:background="#4C51BAC7" />
+
+    <SearchView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/srv_timkiemdonhang"
+        android:layout_below="@+id/tb_quanlydonhang"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#EEEEEE"
+        >
+    </SearchView>
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rc_view_qldh"
+        android:layout_width="match_parent"
+        android:layout_height="400dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginRight="10dp"
+        android:layout_below="@id/srv_timkiemdonhang"
+        android:background="#EEEEEE"/>
+
+    <Button
+        android:id="@+id/bt_add"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_marginTop="600dp"
+        android:layout_marginLeft="300dp"
+        android:background="@drawable/img_btadd_qldh"/>
+</RelativeLayout>

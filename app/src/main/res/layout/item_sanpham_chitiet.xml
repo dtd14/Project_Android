@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:padding="10dp"
+    android:background="#FFFFFF"
+    android:layout_marginBottom="5dp">
+
+    <!-- Tên sản phẩm -->
+    <TextView
+        android:id="@+id/tv_ten_sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="2"
+        android:text="Dell G15 5515"
+        android:textSize="15sp"
+        android:textStyle="bold"/>
+
+    <!-- Số lượng -->
+    <TextView
+        android:id="@+id/tv_soluong_sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="2"
+        android:gravity="center"
+        android:textSize="15sp"/>
+
+    <!-- Giá -->
+    <TextView
+        android:id="@+id/tv_gia_sp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="25000000"
+        android:gravity="right"
+        android:textSize="15sp"
+        android:textColor="#FF5722"/>
+</LinearLayout>
