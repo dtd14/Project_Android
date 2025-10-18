@@ -18,18 +18,22 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
+        android:queryHint="Tìm kiếm đơn hàng"
+        android:iconifiedByDefault="false"
         android:background="#EEEEEE"
         >
     </SearchView>
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rc_view_qldh"
+    <ListView
+        android:id="@+id/lv_view_qldh"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="20dp"
         android:layout_marginRight="10dp"
         android:layout_below="@id/srv_timkiemdonhang"
-        android:background="#EEEEEE"/>
+        android:background="#EEEEEE"
+        />
+
 
     <Button
         android:id="@+id/bt_add"

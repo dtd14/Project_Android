@@ -74,7 +74,7 @@
             android:padding="10dp"/>
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rc_sanpham_chitiet"
+            android:id="@+id/rc_donhang_chitiet"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_margin="10dp"
