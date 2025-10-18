@@ -12,17 +12,25 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Android_CK">
         <activity
+<<<<<<< HEAD
             android:name=".ThemDonHang"
             android:exported="false"/>
         <activity
             android:name=".QuanLyDonHang"
             android:exported="true">
+=======
+            android:name=".MainLaptop"
+            android:exported="true"
+            android:label="">
+>>>>>>> a0a75a7 (QLSP)
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".AddLaptop"/>
+        <activity android:name=".Update_Sanpham_Laptop"/>
     </application>
 
 </manifest>
