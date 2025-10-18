@@ -33,5 +33,4 @@ public class ChiTietDonHang extends AppCompatActivity {
         bt_Xoa = findViewById(R.id.bt_xoa);
         tb_ChiTietDonHang = findViewById(R.id.tb_chitietdonhang);
     }
-
 }

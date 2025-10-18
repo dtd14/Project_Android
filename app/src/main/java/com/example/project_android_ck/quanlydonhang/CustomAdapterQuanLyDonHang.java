@@ -6,10 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import android.util.Log;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.project_android_ck.R;
 
@@ -22,13 +21,13 @@ import java.util.ArrayList;
 //Nối danh sách dữ liệu (ArrayList<DonHang>) với giao diện RecyclerView.
 //
 //Mỗi item trong danh sách sẽ hiển thị thông tin một đơn hàng: mã, tên khách hàng, laptop, số lượng, giá, ngày lập, v.v.
-public class CustomAdapterQuanLyDonHang extends ArrayAdapter<DonHang> {
+public class CustomAdapterQuanLyDonHang extends ArrayAdapter<DonHangFull> {
     private Context context;
-    private ArrayList<DonHang> arrQuanLyDonHang;
+    private ArrayList<DonHangFull> arrQuanLyDonHang;
 
     //tạo phương thức khởi tạo
 
-    public CustomAdapterQuanLyDonHang(@NonNull Context context, int resource, ArrayList<DonHang> arrQuanLyDonHang) {
+    public CustomAdapterQuanLyDonHang(@NonNull Context context, int resource, ArrayList<DonHangFull> arrQuanLyDonHang) {
         super(context, resource,arrQuanLyDonHang);
         this.context = context;
         this.arrQuanLyDonHang = arrQuanLyDonHang;
@@ -51,7 +50,7 @@ public class CustomAdapterQuanLyDonHang extends ArrayAdapter<DonHang> {
         tvMota =itemView.findViewById(R.id.tv_Mota);
         tvTongtien= itemView.findViewById(R.id.tv_Tongtien);
 
-        DonHang dh = arrQuanLyDonHang.get(position);
+        DonHangFull dh = arrQuanLyDonHang.get(position);
         tvMaDH.setText(dh.getMaDH());
         tvTenKH.setText(dh.getHoTen());
         tvLapTop.setText(dh.getSanPham());

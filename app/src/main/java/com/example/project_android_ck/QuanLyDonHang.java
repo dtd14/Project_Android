@@ -12,11 +12,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.Nullable;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.project_android_ck.Data.DAO;
+import com.example.project_android_ck.Data.DataBaseHelper;
 import com.example.project_android_ck.quanlydonhang.CustomAdapterQuanLyDonHang;
-import com.example.project_android_ck.quanlydonhang.DonHang;
+import com.example.project_android_ck.quanlydonhang.DonHangFull;
 
 import java.util.ArrayList;
 
@@ -25,8 +25,10 @@ public class QuanLyDonHang extends AppCompatActivity {
     private Toolbar toolbar;
     private ListView lvQuanLy;
     private Button btadd;
-    private ArrayList<DonHang> listDonHang;
+    private ArrayList<DonHangFull> listDonHang;
     private CustomAdapterQuanLyDonHang adapter;
+    private DAO dao;
+    private DataBaseHelper data;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,11 @@ public class QuanLyDonHang extends AppCompatActivity {
 
         // 1. Tạo danh sách mẫu
         listDonHang = new ArrayList<>();
-        listDonHang.add(new DonHang("DH001", "Nguyễn Văn A", "Laptop Dell", 15000000, 2, "0123456789", "vana@example.com", "Hà Nội", 30000000, "Giao hàng nhanh", "01/10/2025"));
-        listDonHang.add(new DonHang("DH002", "Trần Thị B", "Laptop Asus", 20000000, 1, "0987654321", "btran@example.com", "TP.HCM", 20000000, "Thanh toán online", "02/10/2025"));
-        listDonHang.add(new DonHang("DH003", "Lê Văn C", "Laptop HP", 18000000, 1, "0912345678", "levanc@example.com", "Đà Nẵng", 18000000, "Giao hàng tiết kiệm", "03/10/2025"));
-        listDonHang.add(new DonHang("DH004", "Phạm Thị D", "Laptop Lenovo", 22000000, 2, "0933456789", "phamthid@example.com", "Hải Phòng", 44000000, "Thanh toán khi nhận hàng", "04/10/2025"));
-        listDonHang.add(new DonHang("DH005", "Ngô Văn E", "MacBook Pro", 35000000, 1, "0908765432", "ngovane@example.com", "Cần Thơ", 35000000, "Giao hàng nhanh", "05/10/2025"));
+        listDonHang.add(new DonHangFull("DH001", "Nguyễn Văn A", "Laptop Dell", 15000000, 2, "0123456789", "vana@example.com", "Hà Nội", 30000000, "Giao hàng nhanh", "01/10/2025"));
+        listDonHang.add(new DonHangFull("DH002", "Trần Thị B", "Laptop Asus", 20000000, 1, "0987654321", "btran@example.com", "TP.HCM", 20000000, "Thanh toán online", "02/10/2025"));
+        listDonHang.add(new DonHangFull("DH003", "Lê Văn C", "Laptop HP", 18000000, 1, "0912345678", "levanc@example.com", "Đà Nẵng", 18000000, "Giao hàng tiết kiệm", "03/10/2025"));
+        listDonHang.add(new DonHangFull("DH004", "Phạm Thị D", "Laptop Lenovo", 22000000, 2, "0933456789", "phamthid@example.com", "Hải Phòng", 44000000, "Thanh toán khi nhận hàng", "04/10/2025"));
+        listDonHang.add(new DonHangFull("DH005", "Ngô Văn E", "MacBook Pro", 35000000, 1, "0908765432", "ngovane@example.com", "Cần Thơ", 35000000, "Giao hàng nhanh", "05/10/2025"));
 
         // 2. Khởi tạo adapter
         adapter = new CustomAdapterQuanLyDonHang(this,R.layout.item_quanlydonhang,listDonHang);

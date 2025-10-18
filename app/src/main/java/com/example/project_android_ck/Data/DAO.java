@@ -1,5 +1,6 @@
 package com.example.project_android_ck.Data;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -11,4 +12,8 @@ public class DAO {
         data = new DataBaseHelper(context);
         db = data.getWritableDatabase(); // mở database thật
     }
+    public void themDonHang(){
+        ContentValues values = new ContentValues();
+    }
+
 }

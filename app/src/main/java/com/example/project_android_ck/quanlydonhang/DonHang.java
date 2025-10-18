@@ -1,39 +1,25 @@
 package com.example.project_android_ck.quanlydonhang;
 
 public class DonHang {
-    private String hoTen;
     private String maDH;
-    private String sanPham;
-    private double gia;
+    private String maKH; // Khóa ngoại tới bảng khách hàng
+    private String maSP; // Khóa ngoại tới bảng sản phẩm
+    private String ngayDat;
     private int soLuong;
-    private String soDienThoai;
-    private String email;
-    private String diaChi;
     private double tongTien;
     private String moTa;
 
-    private String ngayLap;
+    public DonHang() {
+    }
 
-    public DonHang(String maDH, String hoTen, String sanPham, double gia, int soLuong, String soDienThoai, String email, String diaChi, double tongTien, String moTa, String ngayLap) {
+    public DonHang(String maDH, String maKH, String maSP, String ngayDat, int soLuong, double tongTien, String moTa) {
         this.maDH = maDH;
-        this.hoTen = hoTen;
-        this.sanPham = sanPham;
-        this.gia = gia;
+        this.maKH = maKH;
+        this.maSP = maSP;
+        this.ngayDat = ngayDat;
         this.soLuong = soLuong;
-        this.soDienThoai = soDienThoai;
-        this.email = email;
-        this.diaChi = diaChi;
         this.tongTien = tongTien;
         this.moTa = moTa;
-        this.ngayLap = ngayLap;
-    }
-
-    public String getNgayLap() {
-        return ngayLap;
-    }
-
-    public void setNgayLap(String ngayLap) {
-        this.ngayLap = ngayLap;
     }
 
     public String getMaDH() {
@@ -44,28 +30,28 @@ public class DonHang {
         this.maDH = maDH;
     }
 
-    public String getHoTen() {
-        return hoTen;
+    public String getMaKH() {
+        return maKH;
     }
 
-    public void setHoTen(String hoTen) {
-        this.hoTen = hoTen;
+    public void setMaKH(String maKH) {
+        this.maKH = maKH;
     }
 
-    public String getSanPham() {
-        return sanPham;
+    public String getMaSP() {
+        return maSP;
     }
 
-    public void setSanPham(String sanPham) {
-        this.sanPham = sanPham;
+    public void setMaSP(String maSP) {
+        this.maSP = maSP;
     }
 
-    public double getGia() {
-        return gia;
+    public String getNgayDat() {
+        return ngayDat;
     }
 
-    public void setGia(double gia) {
-        this.gia = gia;
+    public void setNgayDat(String ngayDat) {
+        this.ngayDat = ngayDat;
     }
 
     public int getSoLuong() {
@@ -74,30 +60,6 @@ public class DonHang {
 
     public void setSoLuong(int soLuong) {
         this.soLuong = soLuong;
-    }
-
-    public String getSoDienThoai() {
-        return soDienThoai;
-    }
-
-    public void setSoDienThoai(String soDienThoai) {
-        this.soDienThoai = soDienThoai;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getDiaChi() {
-        return diaChi;
-    }
-
-    public void setDiaChi(String diaChi) {
-        this.diaChi = diaChi;
     }
 
     public double getTongTien() {

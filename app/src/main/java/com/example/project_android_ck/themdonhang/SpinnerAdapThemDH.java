@@ -53,8 +53,10 @@ public class SpinnerAdapThemDH extends BaseAdapter {
     public View getView(int position, View convertView, ViewGroup parent) {
         //tạo 1 cái item(view) trong spinner
         View item = LayoutInflater.from(context).inflate(R.layout.item_spinner_sanpham,parent,false);
+
         //Tìm đến cái text view có id kia rồi gán giá trị vào
         TextView t = item.findViewById(R.id.tvspinsanpham);
+
         //đặt nội dung hiển thị cho TextView của từng item trong Spinner dựa trên dữ liệu ở vị trí position
         t.setText(getItem(position).toString());
         return item;
