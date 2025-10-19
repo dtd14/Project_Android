@@ -1,14 +1,22 @@
 package com.example.project_android_ck.Data;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
+<<<<<<< HEAD
 import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.DonHang;
 import com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang.DonHangFull;
 
 import java.util.ArrayList;
+=======
+import com.example.project_android_ck.NhaCungCap.NhaCungCap;
+
+import java.util.ArrayList;
+import java.util.List;
+>>>>>>> e4fb54af6914fb8d7ea40bcb64714b840537a4d6
 
 public class DAO {
     private SQLiteDatabase db;
@@ -20,6 +28,7 @@ public class DAO {
     }
 
 
+<<<<<<< HEAD
                                         //Quản lý đơn hàng
     //Thêm đơn hàng
     public void themDonHang(DonHang dh ){
@@ -64,4 +73,37 @@ public class DAO {
         c.close();
         return dhFull;
     }
+=======
+    //Crud nha cung cap
+    @SuppressLint("Range")
+    public List<NhaCungCap> getallnhacc(){
+        List<NhaCungCap> ncc = new ArrayList<>();
+        String querry = "Select * from NhaCungCap";
+        Cursor c = db.rawQuery(querry,null);
+        if(c.moveToFirst()){
+            do{
+                ncc.add(new NhaCungCap(
+                        c.getString(c.getColumnIndex("MaNCC")),
+                        c.getString(c.getColumnIndex("TenNCC")),
+                        c.getString(c.getColumnIndex("DiaChi")),
+                        c.getString(c.getColumnIndex("DienThoai")),
+                        c.getString(c.getColumnIndex("Email")),
+                        c.getString(c.getColumnIndex("GhiChu"))
+                ));
+            }while(c.moveToNext());
+        }
+        return ncc;
+    }
+    public long addnhacc(NhaCungCap ncc){
+        ContentValues values = new ContentValues();
+        values.put("MaNCC",ncc.getMancc());
+        values.put("TenNCC",ncc.getTen());
+        values.put("DiaChi",ncc.getDiaChi());
+        values.put("DienThoai",ncc.getSoDienThoai());
+        values.put("Email",ncc.getEmail());
+        values.put("GhiChu",ncc.getGhiChu());
+        return db.insert("NhaCungCap",null,values);
+    }
+
+>>>>>>> e4fb54af6914fb8d7ea40bcb64714b840537a4d6
 }
