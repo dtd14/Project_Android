@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:layout_margin="10dp"
+    android:background="@drawable/item_background">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:id="@+id/txt_ten"
+            android:layout_width="260dp"
+            android:layout_height="60dp"
+            android:text="Ten nha cung cap"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/text_background"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txt_diachi"
+            android:layout_width="260dp"
+            android:textStyle="bold"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/text_background"
+            android:text="Xuan Kien Xuan Truong Nam Dinh"
+            android:textSize="14sp"/>
+        <TextView
+            android:id="@+id/txt_sodt"
+            android:layout_width="260dp"
+            android:textStyle="bold"
+            android:layout_height="50dp"
+            android:background="@drawable/text_background"
+            android:text="0949758329"
+            android:textSize="14sp">
+        </TextView>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <ImageButton
+            android:id="@+id/delete_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_menu_delete"
+            android:background="?android:attr/selectableItemBackground"
+            android:layout_marginEnd="8dp"/>
+
+        <ImageButton
+            android:id="@+id/restore_button"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:src="@android:drawable/ic_menu_revert"
+            android:background="?android:attr/selectableItemBackground"/>
+
+    </LinearLayout>
+
+</LinearLayout>
