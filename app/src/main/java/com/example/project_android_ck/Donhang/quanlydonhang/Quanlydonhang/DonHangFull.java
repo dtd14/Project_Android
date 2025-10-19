@@ -1,9 +1,9 @@
-package com.example.project_android_ck.quanlydonhang;
+package com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang;
 
 public class DonHangFull {
     private String hoTen;
     private String maDH;
-    private String sanPham;
+    private String tenLapTop;
     private double gia;
     private int soLuong;
     private String soDienThoai;
@@ -14,10 +14,10 @@ public class DonHangFull {
 
     private String ngayLap;
 
-    public DonHangFull(String maDH, String hoTen, String sanPham, double gia, int soLuong, String soDienThoai, String email, String diaChi, double tongTien, String moTa, String ngayLap) {
+    public DonHangFull(String maDH, String hoTen, String tenLapTop, double gia, int soLuong, String soDienThoai, String email, String diaChi, double tongTien, String moTa, String ngayLap) {
         this.maDH = maDH;
         this.hoTen = hoTen;
-        this.sanPham = sanPham;
+        this.tenLapTop = tenLapTop;
         this.gia = gia;
         this.soLuong = soLuong;
         this.soDienThoai = soDienThoai;
@@ -52,12 +52,12 @@ public class DonHangFull {
         this.hoTen = hoTen;
     }
 
-    public String getSanPham() {
-        return sanPham;
+    public String getTenLapTop() {
+        return tenLapTop;
     }
 
     public void setSanPham(String sanPham) {
-        this.sanPham = sanPham;
+        this.tenLapTop = sanPham;
     }
 
     public double getGia() {

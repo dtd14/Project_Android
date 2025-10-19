@@ -17,7 +17,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Bật khóa ngoại
-        // Nếu không bật lên thì sqlite sẽ bỏ qua các ràng buộc Khóa
+        // Nếu không bật lên thì sqlite sẽ bỏ qua các ràng buôc
         db.execSQL("PRAGMA foreign_keys = ON;");
 
         //  Bảng NhaCungCap

@@ -1,4 +1,4 @@
-package com.example.project_android_ck;
+package com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang;
 
 import android.app.Activity;
 import android.os.Bundle;
@@ -10,7 +10,7 @@ import android.widget.Spinner;
 
 import androidx.annotation.Nullable;
 
-import com.example.project_android_ck.themdonhang.SpinnerAdapThemDH;
+import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
 
@@ -27,7 +27,6 @@ public class ThemDonHang extends Activity {
         init();
         SpinnerAdapThemDH adapThemDH = new SpinnerAdapThemDH(this);
         Spin_SP.setAdapter(adapThemDH);
-        // Thêm khách hàng
         //Hủy không thêm thông tin nữa
         bt_Huy.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -35,6 +34,7 @@ public class ThemDonHang extends Activity {
 
             }
         });
+        // Thêm khách hàng
         bt_Luu.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,25 +44,6 @@ public class ThemDonHang extends Activity {
     }
 
     private void setThongTin(){
-        String hoten;
-        String sanpham;
-        String gia;
-        int soluong;
-        String ngaydat;
-        String sodienthoai;
-        String email;
-        String diachi;
-        Double tongtien;
-        String mota;
-        hoten = auto_Ten.getText().toString();
-        gia = edt_Gia.getText().toString();
-        soluong = Integer.parseInt(edt_SoLuong.getText().toString());
-        ngaydat = edt_NgayDat.getText().toString();
-        sodienthoai = edt_SoDienThoai.getText().toString();
-        email = edt_Email.getText().toString();
-        diachi = edt_DiaChi.getText().toString();
-        tongtien = Double.parseDouble(edt_TongTien.getText().toString());
-        mota = edt_MoTa.getText().toString();
 
     }
     private void init(){

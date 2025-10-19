@@ -1,4 +1,4 @@
-package com.example.project_android_ck;
+package com.example.project_android_ck.Donhang.quanlydonhang.Chitietdonhang;
 
 import android.os.Bundle;
 import android.widget.Button;
@@ -8,6 +8,8 @@ import android.widget.Toolbar;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.project_android_ck.R;
 
 public class ChiTietDonHang extends AppCompatActivity {
     private TextView tv_MaDon,tv_KhachHang,tv_TongTien,tv_NgayDat,tv_DiaChi,tv_MoTa;

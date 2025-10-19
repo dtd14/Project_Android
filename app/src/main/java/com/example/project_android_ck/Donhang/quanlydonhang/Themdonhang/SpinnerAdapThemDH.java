@@ -1,6 +1,5 @@
-package com.example.project_android_ck.themdonhang;
+package com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;

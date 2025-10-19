@@ -12,10 +12,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Android_CK">
         <activity
-            android:name=".ThemDonHang"
+            android:name=".Donhang.quanlydonhang.Themdonhang.ThemDonHang"
             android:exported="false"/>
         <activity
-            android:name=".QuanLyDonHang"
+            android:name=".Donhang.quanlydonhang.Quanlydonhang.QuanLyDonHang"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -35,7 +35,6 @@
         android:background="#EEEEEE"
         />
 
-
     <Button
         android:id="@+id/bt_add"
         android:layout_width="44dp"

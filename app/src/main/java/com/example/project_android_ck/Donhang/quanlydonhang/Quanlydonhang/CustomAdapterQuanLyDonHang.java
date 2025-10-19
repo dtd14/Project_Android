@@ -1,4 +1,4 @@
-package com.example.project_android_ck.quanlydonhang;
+package com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -53,7 +53,7 @@ public class CustomAdapterQuanLyDonHang extends ArrayAdapter<DonHangFull> {
         DonHangFull dh = arrQuanLyDonHang.get(position);
         tvMaDH.setText(dh.getMaDH());
         tvTenKH.setText(dh.getHoTen());
-        tvLapTop.setText(dh.getSanPham());
+        tvLapTop.setText(dh.getTenLapTop());
         tvSoluong.setText(String.valueOf(dh.getSoLuong()));
         tvGia.setText(String.valueOf(dh.getGia()));
         tvNgaylap.setText(dh.getNgayLap());
