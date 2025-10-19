@@ -1,4 +1,4 @@
-package com.example.project_android_ck;
+package com.example.project_android_ck.Khach_hang;
 
 public class Khach_hang {
     public Khach_hang(String ma, String ten, String sdt, String email, String diachi) {

@@ -1,4 +1,4 @@
-package com.example.project_android_ck;
+package com.example.project_android_ck.Khach_hang;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+
+import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
 
@@ -32,12 +34,14 @@ public class Custom_adapter_qlkh extends ArrayAdapter<Khach_hang> {
         ma = view.findViewById(R.id.tv_makh);
         ten = view.findViewById(R.id.tv_tenkh);
         sdt = view.findViewById(R.id.tv_sdt);
+        email = view.findViewById(R.id.tv_email);
         diachi = view.findViewById(R.id.tv_diachi);
 
         Khach_hang kh = arrayList.get(position);
         ma.setText(kh.getMa());
         ten.setText(kh.getTen());
         sdt.setText(kh.getSdt());
+        email.setText(kh.getEmail());
         diachi.setText(kh.getDiachi());
         return view;
     }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <HorizontalScrollView
@@ -16,35 +16,35 @@
 
             <TextView
                 android:id="@+id/tv_makh"
-                android:layout_width="wrap_content"
+                android:layout_width="50dp"
                 android:layout_height="wrap_content"
                 android:text="Mã KH"
                 android:textStyle="bold"/>
 
             <TextView
                 android:id="@+id/tv_tenkh"
-                android:layout_width="wrap_content"
+                android:layout_width="125dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Tên KH"/>
 
             <TextView
                 android:id="@+id/tv_sdt"
-                android:layout_width="wrap_content"
+                android:layout_width="80dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="SDT"/>
 
             <TextView
                 android:id="@+id/tv_email"
-                android:layout_width="wrap_content"
+                android:layout_width="200dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Email"/>
 
             <TextView
                 android:id="@+id/tv_diachi"
-                android:layout_width="wrap_content"
+                android:layout_width="70dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
                 android:text="Địa chỉ"/>
