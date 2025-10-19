@@ -42,9 +42,11 @@ public class DAO {
                 ));
             }while(c.moveToNext());
         }
+        c.close();
+
         return ncc;
     }
-    public long addnhacc(NhaCungCap ncc){
+    public long add_nhacc(NhaCungCap ncc){
         ContentValues values = new ContentValues();
         values.put("MaNCC",ncc.getMancc());
         values.put("TenNCC",ncc.getTen());
@@ -53,6 +55,19 @@ public class DAO {
         values.put("Email",ncc.getEmail());
         values.put("GhiChu",ncc.getGhiChu());
         return db.insert("NhaCungCap",null,values);
+    }
+    public int Update_ncc(NhaCungCap ncc){
+        ContentValues values = new ContentValues();
+        values.put("MaNCC",ncc.getMancc());
+        values.put("TenNCC",ncc.getTen());
+        values.put("DiaChi",ncc.getDiaChi());
+        values.put("DienThoai",ncc.getSoDienThoai());
+        values.put("Email",ncc.getEmail());
+        values.put("GhiChu",ncc.getGhiChu());
+        return db.update("NhaCungCap",values,"MaNCC=?",new String[]{ncc.getMancc()});
+    }
+    public int delete_ncc(NhaCungCap ncc){
+        return db.delete("NhaCungCap","MaNCC=?",new String[]{ncc.getMancc()});
     }
 
 }

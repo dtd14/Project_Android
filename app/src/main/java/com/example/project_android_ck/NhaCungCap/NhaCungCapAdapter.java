@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.ViewHolder> {
 
@@ -22,8 +23,8 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
     private OnItemClickListener listener;
 
     public interface OnItemClickListener {
-        void onDeleteClick(int position);
-        void onRestoreClick(int position);
+        void onDeleteClick(NhaCungCap ncc);
+        void onUpdateClick(NhaCungCap ncc);
     }
 
     public NhaCungCapAdapter(Context context, ArrayList<NhaCungCap> nhaCungCapList ,OnItemClickListener listener) {
@@ -49,8 +50,9 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
             @Override
             public void onClick(View v) {
                 int currentPosition = holder.getBindingAdapterPosition();
+                Log.d("DEBUG","currentPosition:" + currentPosition);
                 if (currentPosition != RecyclerView.NO_POSITION && listener != null) {
-                    listener.onDeleteClick(currentPosition);
+                    listener.onDeleteClick(nhaCungCapList.get(currentPosition));
                 }
             }
         });
@@ -60,7 +62,7 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
             public void onClick(View v) {
                 int currentPosition = holder.getBindingAdapterPosition();
                 if (currentPosition != RecyclerView.NO_POSITION && listener != null) {
-                    listener.onRestoreClick(currentPosition);
+                    listener.onUpdateClick(nhaCungCapList.get(currentPosition));
                 }
             }
         });
@@ -69,6 +71,11 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
     @Override
     public int getItemCount() {
         return nhaCungCapList.size();
+    }
+    public void Update_NhaCungCap(List<NhaCungCap> Newlistncc){
+        this.nhaCungCapList.clear();
+        this.nhaCungCapList.addAll(Newlistncc);
+        notifyDataSetChanged();
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
