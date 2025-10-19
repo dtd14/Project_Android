@@ -18,7 +18,7 @@
             android:name=".Donhang.quanlydonhang.Quanlydonhang.QuanLyDonHang"
             android:exported="true"/>
         <activity
-            android:name=".MainLaptop"
+            android:name=".MainActivity"
             android:exported="true"
             android:label="">
 
