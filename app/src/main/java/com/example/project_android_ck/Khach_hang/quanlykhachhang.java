@@ -30,7 +30,6 @@ public class quanlykhachhang extends Activity {
     DAO dao;
     public ArrayList<Khach_hang> arr;
     public Custom_adapter_qlkh adap;
-    public Khach_hang khachHang = new Khach_hang();
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,9 +50,11 @@ public class quanlykhachhang extends Activity {
                 startActivity(it);
             }
         });
-        arr.add(new Khach_hang("KH001","Dao Thanh Dat","0344553417","daothanhdat093@gmail.com","Phu Tho"));
-        arr.add(new Khach_hang("KH002","Nguyen Hong Quan","0354283046","quanpink005@gmail.com","Nam Dinh"));
-        adap.notifyDataSetChanged();
+    }
+    @Override
+    protected void onResume() {
+        super.onResume();
+        getlistview_khachhang();
     }
 
     @Override
@@ -85,11 +86,12 @@ public class quanlykhachhang extends Activity {
             huy = dl.findViewById(R.id.ibtn_huy);
 
             ma.setText(kh.getMa());
+            ma.setEnabled(false);
             ten.setText(kh.getTen());
             sdt.setText(kh.getSdt());
-            email.setText(kh.getSdt());
+            email.setText(kh.getEmail());
             diachi.setText(kh.getDiachi());
-            ma.requestFocus();
+            ten.requestFocus();
             huy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -102,12 +104,7 @@ public class quanlykhachhang extends Activity {
                             dl.dismiss();
                         }
                     });
-                    ab.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
+                    ab.setNegativeButton("Không", null);
                     ab.show();
                 }
             });
@@ -116,27 +113,46 @@ public class quanlykhachhang extends Activity {
                 public void onClick(View v) {
                     AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
                     ab.setTitle("Thông báo !");
-                    ab.setMessage("Thêm khách hàng này ?");
+                    ab.setMessage("Cập nhật khách hàng này ?");
                     ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialog, int which) {
-                            //
-                            //
-                            //
+                            dao.update_khachhang(new Khach_hang(ma.getText().toString(),ten.getText().toString(),sdt.getText().toString(),email.getText().toString(),diachi.getText().toString()));
+                            dl.dismiss();
+                            AlertDialog.Builder success = new AlertDialog.Builder(quanlykhachhang.this);
+                            success.setTitle("Thành công!");
+                            success.setMessage("Đã cập nhật khách hàng!");
+                            success.setPositiveButton("OK", null);
+                            success.show();
+                            getlistview_khachhang();
                         }
                     });
-                    ab.setNegativeButton("Không", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-
-                        }
-                    });
+                    ab.setNegativeButton("Không", null);
                     ab.show();
                 }
             });
+            dl.show();
         }
+
         if (item.getItemId()==R.id.item_xoa)
         {
+            AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
+            ab.setTitle("Xóa !");
+            ab.setMessage("Xóa khách hàng này ?");
+            ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dao.delete_khachhang(kh);
+                    getlistview_khachhang();
+                    AlertDialog.Builder success = new AlertDialog.Builder(quanlykhachhang.this);
+                    success.setTitle("Thành công!");
+                    success.setMessage("Đã xóa khách hàng!");
+                    success.setPositiveButton("OK", null);
+                    success.show();
+                }
+            });
+            ab.setNegativeButton("Không", null);
+            ab.show();
 
         }
         return super.onContextItemSelected(item);
