@@ -220,9 +220,28 @@ public class DAO {
 
                                         ///  QUẢN LÝ LAPTOP ///
     /// THÊM LAPTOP
-    public long themLapTop(){
-        return 0;
+    public long themLapTop(Laptop lt){
+        ContentValues values = new ContentValues();
+        values.put("MaLaptop",lt.getMaLapTop());
+        values.put("TenLaptop",lt.getTenLapTop());
+        values.put("Gia",lt.getGia());
+        values.put("SoLuong",lt.getGia());
+        values.put("MaNCC",lt.getMaNCC());
+        return db.insert("Laptop",null,values);
     }
+    // Lấy mã NCC
+    public ArrayList<String> getDanhSachMaNCC() {
+        ArrayList<String> dsMa = new ArrayList<>();
+        Cursor c = db.rawQuery("SELECT MaNCC FROM NhaCungCap", null);
+        if (c.moveToFirst()) {
+            do {
+                dsMa.add(c.getString(0));
+            } while (c.moveToNext());
+        }
+        c.close();
+        return dsMa;
+    }
+
     /// SỬA LAPTOP
     /// XÓA LAPTOP
     /// Lấy laptop
