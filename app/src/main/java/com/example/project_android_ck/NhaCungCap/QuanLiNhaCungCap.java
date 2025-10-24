@@ -4,15 +4,16 @@ package com.example.project_android_ck.NhaCungCap;
 
 
 
-import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.SearchView;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AlertDialog;
@@ -25,15 +26,18 @@ import com.example.project_android_ck.Data.DAO;
 import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class QuanLiNhaCungCap extends AppCompatActivity {
     private DAO dao;
 
     private SearchView searchSupplier;
+    private Spinner  spinner;
     private RecyclerView supplierList;
     private Button addSupplierButton;
     private ArrayList<NhaCungCap> nhaCungCapList;
     private NhaCungCapAdapter adapter;
+    private String selectedField ;
 
 
     @Override
@@ -42,6 +46,7 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
         setContentView(R.layout.quanlinhacungcap_activity);
 
         searchSupplier = findViewById(R.id.search_supplier);
+        spinner =  findViewById(R.id.spinner_filter);
         supplierList = findViewById(R.id.supplier_list);
         addSupplierButton = findViewById(R.id.add_supplier_button);
         dao = new DAO(this);
@@ -103,6 +108,7 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
                 edt_sodt.setText(ncc.getSoDienThoai());
                 edt_email.setText(ncc.getEmail());
                 edt_ghichu.setText(ncc.getGhiChu());
+                dao.backupBeforeUpdate(ncc);
                 ab.setView(view);
         //        ab.setTitle("Sua thong tin"+ncc.getTen());
                 ab.setPositiveButton("Sua", new DialogInterface.OnClickListener() {
@@ -127,6 +133,7 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
                         ncc.setEmail(emailMoi);
                         ncc.setGhiChu(ghiChuMoi);
 
+
                         // Gọi DAO update
                         int result = dao.Update_ncc(ncc);
 
@@ -140,11 +147,48 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
 
 
                 });
+                ab.setNegativeButton("Huy", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                ab.show();
+            }
+
+            @Override
+            public void onDetailClick(NhaCungCap ncc) {
+                Intent it = new Intent(QuanLiNhaCungCap.this, ChiTietNhaCungCap.class);
+                it.putExtra("Supplier_id",ncc.getMancc());
+                startActivity(it);
+            }
+
+            @Override
+            public void onRestoreClick(NhaCungCap ncc) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(QuanLiNhaCungCap.this);
+                ab.setTitle("Khoi Phuc Du Lieu");
+                ab.setMessage("Ban co chac chan muon khoi phuc du lieu cua "+ncc.getMancc());
+                ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        boolean result = dao.restoreNhaCungCap(ncc.getMancc());
+                        adapter.Update_NhaCungCap(dao.getallnhacc());
+                        if(result){
+                            Toast.makeText(QuanLiNhaCungCap.this, "Khoi Phuc du lieu thanh cong", Toast.LENGTH_SHORT).show();
+                        }else
+                            Toast.makeText(QuanLiNhaCungCap.this, "Dữ liệu đã giống với bản backup, không cần khôi phục", Toast.LENGTH_SHORT).show();
+                    }
+                });
+                ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
                 ab.show();
 
-
-
             }
+
         });
 //        Log.d("DEBUG", "Danh sach size = " + nhaCungCapList.size());
         supplierList.setAdapter(adapter);
@@ -152,7 +196,55 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
         addSupplierButton.setOnClickListener(v -> {
             openAddSupplierForm();
         });
+        // --- Spinner chọn trường tìm ---
+        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
+                this,
+                android.R.layout.simple_spinner_dropdown_item,
+                new String[]{"Tất cả","TenNCC","MaNCC", "DiaChi"}
+        );
+        spinner.setAdapter(spinnerAdapter);
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                selectedField = parent.getItemAtPosition(position).toString();
+                performSearch(searchSupplier.getQuery().toString()); // realtime lọc lại
+
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+        searchSupplier.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                performSearch(newText);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                performSearch(query);
+                return true;
+            }
+        });
+
     }
+
+
+
+    private void performSearch(String keyword) {
+        List<NhaCungCap> resultList = new ArrayList<>();
+
+        if (keyword.trim().isEmpty()) {
+            resultList = dao.getallnhacc(); // nếu rỗng thì lấy hết
+        } else {
+            resultList = dao.searchNhaCungCap(selectedField, keyword);
+        }
+
+        adapter.Update_NhaCungCap(resultList);
+    }
+
 
     private void openAddSupplierForm() {
         Intent it = new Intent(this,ThemNhacc.class);

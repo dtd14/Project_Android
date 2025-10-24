@@ -7,7 +7,7 @@
     android:background="@drawable/item_background">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:orientation="vertical"
@@ -15,55 +15,84 @@
 
         <TextView
             android:id="@+id/txt_ten"
-            android:layout_width="260dp"
+            android:layout_width="match_parent"
             android:layout_height="60dp"
             android:text="Ten nha cung cap"
             android:layout_marginBottom="10dp"
             android:background="@drawable/text_background"
             android:textSize="20sp"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:padding="8dp"
+            android:gravity="center_vertical" />
 
         <TextView
             android:id="@+id/txt_diachi"
-            android:layout_width="260dp"
-            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:textStyle="normal"
+            android:textColor="@color/black"
             android:layout_height="50dp"
             android:layout_marginBottom="10dp"
             android:background="@drawable/text_background"
             android:text="Xuan Kien Xuan Truong Nam Dinh"
-            android:textSize="14sp"/>
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:gravity="center_vertical" />
+
         <TextView
             android:id="@+id/txt_sodt"
-            android:layout_width="260dp"
-            android:textStyle="bold"
+            android:layout_width="match_parent"
+            android:textColor="@color/black"
+            android:textStyle="normal"
             android:layout_height="50dp"
             android:background="@drawable/text_background"
             android:text="0949758329"
-            android:textSize="14sp">
-        </TextView>
+            android:textSize="14sp"
+            android:padding="8dp"
+            android:gravity="center_vertical" />
 
     </LinearLayout>
 
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:gravity="center">
+        android:orientation="vertical"
+        android:gravity="center"
+        android:padding="8dp">
+
+        <ImageButton
+            android:id="@+id/btn_xemchitiet"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@android:drawable/ic_menu_info_details"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Xem chi tiết"
+            android:layout_marginBottom="8dp" />
+
+        <ImageButton
+            android:id="@+id/btn_sua"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@android:drawable/ic_menu_edit"
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Sửa"
+            android:layout_marginBottom="8dp" />
 
         <ImageButton
             android:id="@+id/delete_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:src="@android:drawable/ic_menu_delete"
             android:background="?android:attr/selectableItemBackground"
-            android:layout_marginEnd="8dp"/>
+            android:contentDescription="Xóa"
+            android:layout_marginBottom="8dp" />
 
         <ImageButton
             android:id="@+id/restore_button"
-            android:layout_width="30dp"
-            android:layout_height="30dp"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
             android:src="@android:drawable/ic_menu_revert"
-            android:background="?android:attr/selectableItemBackground"/>
+            android:background="?android:attr/selectableItemBackground"
+            android:contentDescription="Khôi phục" />
 
     </LinearLayout>
 

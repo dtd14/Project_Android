@@ -2,20 +2,24 @@ package com.example.project_android_ck.NhaCungCap;
 
 import android.content.DialogInterface;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.example.project_android_ck.Data.DAO;
 import com.example.project_android_ck.R;
 
 public class ThemNhacc extends AppCompatActivity {
     DAO dao;
+    Toolbar toolbar;
     NhaCungCapAdapter ncc_adapter;
 
     EditText edt_ma, edt_ten , edt_diachi , edt_sodt , edt_email , edt_ghichu;
@@ -30,6 +34,12 @@ public class ThemNhacc extends AppCompatActivity {
         edt_sodt = findViewById(R.id.edit_so_dien_thoai);
         edt_email = findViewById(R.id.edit_email);
         edt_ghichu = findViewById(R.id.edit_ghichu);
+        toolbar = findViewById(R.id.toolbarsupplier);
+        setSupportActionBar(toolbar);
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().setTitle("Them Nha Cung Cap");
+            getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        }
         dao=new DAO(this);
         btn_lua = findViewById(R.id.button_luu);
         btn_huy = findViewById(R.id.button_huy);
@@ -121,8 +131,13 @@ public class ThemNhacc extends AppCompatActivity {
             }
         });
         ab.show();
-
-
+    }
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if (item.getItemId() == android.R.id.home) {
+            getOnBackPressedDispatcher().onBackPressed();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
 }

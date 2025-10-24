@@ -14,14 +14,14 @@
 <!--        <TextView-->
 <!--            android:layout_width="match_parent"-->
 <!--            android:layout_height="wrap_content"-->
-<!--            android:text="Thêm Nhà Cung Cấp"-->
+<!--            android:text="Chi tiet Nhà Cung Cấp"-->
 <!--            android:background="#03A9F4"-->
 <!--            android:textSize="20sp"-->
 <!--            android:textStyle="bold"-->
 <!--            android:gravity="center"-->
 <!--            android:layout_marginBottom="30dp"/>-->
         <androidx.appcompat.widget.Toolbar
-            android:id="@+id/toolbarsupplier"
+            android:id="@+id/toolbar_detail_supplier"
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:background="#2196F3"
@@ -36,7 +36,7 @@
         </TextView>
 
         <EditText
-            android:id="@+id/edit_ma_nha_cung_cap"
+            android:id="@+id/edit_ma_nha_cung_cap_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
@@ -53,7 +53,7 @@
         </TextView>
 
         <EditText
-            android:id="@+id/edit_ten_nha_cung_cap"
+            android:id="@+id/edit_ten_nha_cung_cap_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
@@ -69,7 +69,7 @@
             android:textStyle="bold">
         </TextView>
         <EditText
-            android:id="@+id/edit_dia_chi"
+            android:id="@+id/edit_dia_chi_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
@@ -85,7 +85,7 @@
             android:textStyle="bold">
         </TextView>
         <EditText
-            android:id="@+id/edit_so_dien_thoai"
+            android:id="@+id/edit_so_dien_thoai_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/edittext_background"
@@ -102,11 +102,71 @@
         </TextView>
 
         <EditText
-            android:id="@+id/edit_email"
+            android:id="@+id/edit_email_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
             android:inputType="textEmailAddress"
+            android:background="@drawable/edittext_background"
+            android:layout_marginBottom="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Cung Cap San Pham"
+            android:textStyle="bold"
+            android:textSize="20dp"
+            android:layout_marginBottom="20dp"
+            android:background="#03A9F4">
+        </TextView>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ma San Pham"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edit_loai_san_pham_ct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ma San Pham"
+            android:inputType="textCapCharacters"
+            android:background="@drawable/edittext_background"
+            android:layout_marginBottom="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Loai San Pham"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edit_ma_san_pham_ct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Loai San Pham"
+            android:inputType="textCapWords"
+            android:background="@drawable/edittext_background"
+            android:layout_marginBottom="16dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Ten San Pham"
+            android:layout_marginBottom="10dp"
+            android:textSize="20dp"
+            android:textStyle="bold">
+        </TextView>
+
+        <EditText
+            android:id="@+id/edit_ten_san_pham_ct"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Ten San Pham"
+            android:inputType="textCapWords"
             android:background="@drawable/edittext_background"
             android:layout_marginBottom="16dp"/>
         <TextView
@@ -119,7 +179,7 @@
         </TextView>
 
         <EditText
-            android:id="@+id/edit_ghichu"
+            android:id="@+id/edit_ghichu_ct"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:minLines="3"
@@ -127,31 +187,9 @@
             android:inputType="textMultiLine"
             android:background="@drawable/edittext_background"
             android:layout_marginBottom="16dp"/>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
 
-            <Button
-                android:id="@+id/button_huy"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Hủy"
-                app:backgroundTint="@null"
-                android:background="#E61C4E"
-                android:layout_marginEnd="8dp"/>
 
-            <Button
-                android:id="@+id/button_luu"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Lưu"
-                app:backgroundTint="@null"
-                android:background="#1542ED"
-                android:textColor="@color/white"/>
 
         </LinearLayout>
-    </LinearLayout>
+
 </ScrollView>

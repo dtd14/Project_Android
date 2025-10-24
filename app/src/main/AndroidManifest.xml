@@ -15,15 +15,21 @@
 <!--            android:name=".ThemDonHang"-->
 <!--            android:exported="false"/>-->
         <activity
-            android:name=".MainActivity"
+            android:name=".lg_regis.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>>
+        <activity android:name=".NhaCungCap.QuanLiNhaCungCap">
         </activity>
         <activity android:name=".NhaCungCap.ThemNhacc">
+        </activity>
+        <activity android:name=".NhaCungCap.ChiTietNhaCungCap">
+        </activity>
+        <activity android:name=".lg_regis.RegisterActivity">
         </activity>
     </application>
 
