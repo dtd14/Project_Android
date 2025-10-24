@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.widget.Toast;
 
 import com.example.project_android_ck.Khach_hang.Khach_hang;
 import com.example.project_android_ck.NhaCungCap.NhaCungCap;
@@ -71,17 +72,23 @@ public class DAO {
         return db.delete("NhaCungCap","MaNCC=?",new String[]{ncc.getMancc()});
     }
 
-    //KHACH HANG
 
-    public void add_khachhang(Khach_hang kh)
+    //KHACH HANG
+    public long add_khachhang(Khach_hang kh)
     {
+        long result;
         ContentValues values = new ContentValues();
         values.put("MaKH",kh.getMa());
         values.put("TenKH",kh.getTen());
         values.put("SDT",kh.getSdt());
         values.put("Email",kh.getEmail());
         values.put("DiaChi",kh.getDiachi());
-        db.insert("KhachHang",null,values);
+        result = db.insert("KhachHang",null,values);
+        return result;
+//        if(result<=0)
+//        {
+//            Toast.makeText(, "Thêm không thành công!", Toast.LENGTH_SHORT).show();
+//        }
     }
     public void update_khachhang(Khach_hang kh)
     {
@@ -116,4 +123,6 @@ public class DAO {
         cursor.close();
         return arrayList;
     }
+
+
 }

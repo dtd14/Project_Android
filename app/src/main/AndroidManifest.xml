@@ -15,7 +15,7 @@
 <!--            android:name=".ThemDonHang"-->
 <!--            android:exported="false"/>-->
         <activity
-            android:name=".MainActivity"
+            android:name=".Khach_hang.quanlykhachhang"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
