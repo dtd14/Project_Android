@@ -11,12 +11,13 @@ import android.widget.SearchView;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
 import androidx.annotation.Nullable;
 
 import com.example.project_android_ck.Data.DAO;
 import com.example.project_android_ck.Data.DataBaseHelper;
 import com.example.project_android_ck.Donhang.quanlydonhang.Chitietdonhang.ChiTietDonHang;
+
+import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.DonHang;
 import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.ThemDonHang;
 import com.example.project_android_ck.R;
 
@@ -29,6 +30,8 @@ public class QuanLyDonHang extends AppCompatActivity {
     private Button btadd;
     private ArrayList<DonHangFull> listDonHang;
     private CustomAdapterQuanLyDonHang adapter;
+    private ArrayList<DonHang> danhsachdonhang = new ArrayList<>();
+
     private DAO dao;
     private DataBaseHelper data;
     @Override
@@ -36,15 +39,8 @@ public class QuanLyDonHang extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.quanlydonhang_activity);
         init();
-
+        dao = new DAO(this);
         listViewThongTinDonHang();
-        // 1. Tạo danh sách mẫu
-        listDonHang = new ArrayList<>();
-        listDonHang.add(new DonHangFull("DH001", "Nguyễn Văn A", "Laptop Dell", 15000000, 2, "0123456789", "vana@example.com", "Hà Nội", 30000000, "Giao hàng nhanh", "01/10/2025"));
-        listDonHang.add(new DonHangFull("DH002", "Trần Thị B", "Laptop Asus", 20000000, 1, "0987654321", "btran@example.com", "TP.HCM", 20000000, "Thanh toán online", "02/10/2025"));
-        listDonHang.add(new DonHangFull("DH003", "Lê Văn C", "Laptop HP", 18000000, 1, "0912345678", "levanc@example.com", "Đà Nẵng", 18000000, "Giao hàng tiết kiệm", "03/10/2025"));
-        listDonHang.add(new DonHangFull("DH004", "Phạm Thị D", "Laptop Lenovo", 22000000, 2, "0933456789", "phamthid@example.com", "Hải Phòng", 44000000, "Thanh toán khi nhận hàng", "04/10/2025"));
-        listDonHang.add(new DonHangFull("DH005", "Ngô Văn E", "MacBook Pro", 35000000, 1, "0908765432", "ngovane@example.com", "Cần Thơ", 35000000, "Giao hàng nhanh", "05/10/2025"));
         // 2. Khởi tạo adapter
         //btadd -> layout Thêm đơn hàng
         btadd.setOnClickListener(new View.OnClickListener() {
@@ -66,14 +62,19 @@ public class QuanLyDonHang extends AppCompatActivity {
                 return false;
             }
         });
+
+        /// Bảng chi tiết đơn hàng
         lvQuanLy.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 Intent i = new Intent(QuanLyDonHang.this, ChiTietDonHang.class);
+                i.putExtra("MaDH",listDonHang.get(position).getMaDH());
                 startActivity(i);
                 return true;
             }
         });
+
+
     }
     //ánh xạ
     private void init(){
@@ -82,9 +83,18 @@ public class QuanLyDonHang extends AppCompatActivity {
         searchView = findViewById(R.id.srv_timkiemdonhang);
     }
     public void listViewThongTinDonHang(){
-        listDonHang = dao.selectThongTinDonHang();
+        listDonHang =dao.selectThongTinDonHang();
         adapter = new CustomAdapterQuanLyDonHang(this,R.layout.item_quanlydonhang,listDonHang);
         lvQuanLy.setAdapter(adapter);
+        adapter.notifyDataSetChanged();
+    }
+
+
+    // Mỗi khi quay lại layout này thì load lai listview
+    @Override
+    protected void onResume() {
+        super.onResume();
+        listViewThongTinDonHang(); // Mỗi khi quay lại màn hình, load lại danh sách
     }
 
 }

@@ -3,12 +3,13 @@ package com.example.project_android_ck.Data;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "QLBanLapTop.db";
-    public static final int DB_VERSION = 1;
+    public static final int DB_VERSION = 2;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context,DB_NAME, null, DB_VERSION);
@@ -64,6 +65,7 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY (MaDH, MaLaptop), " +
                 "FOREIGN KEY (MaDH) REFERENCES DonHang(MaDH) ON DELETE CASCADE, " +
                 "FOREIGN KEY (MaLaptop) REFERENCES Laptop(MaLaptop) ON DELETE CASCADE)");
+
     }
 
 

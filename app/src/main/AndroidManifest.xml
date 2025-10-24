@@ -12,24 +12,23 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Project_Android_CK">
         <activity
+            android:name=".Donhang.quanlydonhang.Chitietdonhang.ChiTietDonHang"/>
+        <activity
             android:name=".Donhang.quanlydonhang.Themdonhang.ThemDonHang"
-            ></activity>
+            android:exported="false"/>
+        <activity android:name=".Khach_hang.chitiet_qlkh"
+            />
+        <activity android:name=".Quanlylaptop.AddLaptop"
+            />
         <activity
             android:name=".Donhang.quanlydonhang.Quanlydonhang.QuanLyDonHang"
-            android:exported="true"/>
-        <activity
-            android:name=".MainActivity"
-            android:exported="true"
-            android:label="">
-
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".AddLaptop"/>
-        <activity android:name=".Update_Sanpham_Laptop"/>
     </application>
 
 </manifest>

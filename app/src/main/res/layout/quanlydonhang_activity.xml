@@ -2,44 +2,47 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:padding="10dp">
 
-    <Toolbar
+    <!-- Thanh tiêu đề -->
+    <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_quanlydonhang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:title="Quản lý đơn hàng"
-        android:background="#4C51BAC7" />
+        android:background="#6CB3EF"
+        app:title="Quản lý đơn hàng"
+        />
 
+    <!-- Thanh tìm kiếm -->
     <SearchView
+        android:id="@+id/srv_timkiemdonhang"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/srv_timkiemdonhang"
-        android:layout_below="@+id/tb_quanlydonhang"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_below="@id/tb_quanlydonhang"
+        android:layout_margin="12dp"
         android:queryHint="Tìm kiếm đơn hàng"
         android:iconifiedByDefault="false"
-        android:background="#EEEEEE"
-        >
-    </SearchView>
+        />
+
+    <!-- Danh sách đơn hàng -->
     <ListView
         android:id="@+id/lv_view_qldh"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginRight="10dp"
+        android:layout_height="300dp"
         android:layout_below="@id/srv_timkiemdonhang"
-        android:background="#EEEEEE"
-        />
+        android:layout_marginTop="4dp"
+        android:background="#BAB3B3" />
 
+    <!-- Nút thêm đơn hàng -->
     <Button
         android:id="@+id/bt_add"
-        android:layout_width="44dp"
-        android:layout_height="44dp"
-        android:layout_marginTop="600dp"
-        android:layout_marginLeft="300dp"
-        android:background="@drawable/img_btadd_qldh"/>
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/img_btadd_qldh" />
+
 </RelativeLayout>

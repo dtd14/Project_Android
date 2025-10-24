@@ -6,17 +6,15 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
-<<<<<<< HEAD
-import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.DonHang;
+import com.example.project_android_ck.Donhang.quanlydonhang.Chitietdonhang.ChiTiet;
 import com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang.DonHangFull;
-
-import java.util.ArrayList;
-=======
+import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.DonHang;
+import com.example.project_android_ck.Khach_hang.Khach_hang;
+import com.example.project_android_ck.Quanlylaptop.Laptop;
 import com.example.project_android_ck.NhaCungCap.NhaCungCap;
 
 import java.util.ArrayList;
 import java.util.List;
->>>>>>> e4fb54af6914fb8d7ea40bcb64714b840537a4d6
 
 public class DAO {
     private SQLiteDatabase db;
@@ -28,17 +26,27 @@ public class DAO {
     }
 
 
-<<<<<<< HEAD
                                         //Quản lý đơn hàng
+
+
     //Thêm đơn hàng
-    public void themDonHang(DonHang dh ){
+    public long themDonHang(DonHang dh ){
         ContentValues values = new ContentValues();
         values.put("MaDH",dh.getMaDH());
         values.put("MaKH",dh.getMaKH());
-        values.put("NgayLap",dh.getNgayDat());
+        values.put("NgayLap",dh.getNgayLap());
         values.put("TongTien",dh.getTongTien());
         values.put("MoTa",dh.getMoTa());
-        db.insert("DonHang",null,values);
+        return db.insert("DonHang",null,values);
+    }
+    //Thêm chi tiết đơn hàng
+    public void themChiTietDonHang(String MaDH,String MaLapTop,int SoLuong,Double DonGia){
+        ContentValues values = new ContentValues();
+        values.put("MaDH",MaDH);
+        values.put("MaLaptop",MaLapTop);
+        values.put("SoLuong",SoLuong);
+        values.put("DonGia",DonGia);
+        db.insert("ChiTietDonHang",null,values);
     }
     //Lấy thông tin đơn hàng
     public ArrayList<DonHangFull> selectThongTinDonHang(){
@@ -73,7 +81,45 @@ public class DAO {
         c.close();
         return dhFull;
     }
-=======
+
+    //Update đơn hàng
+    public int updateDonHang(DonHang dh){
+        ContentValues values = new ContentValues();
+        values.put("MaDH",dh.getMaDH());
+        values.put("NgayLap",dh.getNgayLap());
+        values.put("MaKH",dh.getMaKH());
+        values.put("TongTien",dh.getTongTien());
+        values.put("MoTa",dh.getMoTa());
+        return db.update("DonHang",values,"MaDH = ?",new String[]{dh.getMaDH()});
+    }
+    public int updateChiTietDonHang(ChiTiet ct){
+        ContentValues values = new ContentValues();
+        values.put("MaDH",ct.getMaDH());
+        values.put("MaLaptop",ct.getMaLaptop());
+        values.put("SoLuong",ct.getSoLuong());
+        values.put("DonGia",ct.getDonGia());
+        return db.update("ChiTietDonHang",values,"MaDH = ? and MaLaptop = ?",new String[]{ct.getMaDH(),ct.getMaLaptop()});
+    }
+
+
+    //Xóa Đơn Hàng
+    public int xoaDonHang(String MaDH){
+        return db.delete("DonHang","MaDH = ?",new String[]{MaDH});
+    }
+    /// Lấy mãkhacschs hàng theo teen
+    public String layMaKhachHangTheoTen(String tenKH) {
+        Cursor c = db.rawQuery("SELECT MaKH FROM KhachHang WHERE TenKH = ?", new String[]{tenKH});
+        if (c.moveToFirst()) {
+            String ma = c.getString(0);
+            c.close();
+            return ma;
+        }
+        c.close();
+        return null;
+    }
+
+
+
     //Crud nha cung cap
     @SuppressLint("Range")
     public List<NhaCungCap> getallnhacc(){
@@ -92,9 +138,11 @@ public class DAO {
                 ));
             }while(c.moveToNext());
         }
+        c.close();
+
         return ncc;
     }
-    public long addnhacc(NhaCungCap ncc){
+    public long add_nhacc(NhaCungCap ncc){
         ContentValues values = new ContentValues();
         values.put("MaNCC",ncc.getMancc());
         values.put("TenNCC",ncc.getTen());
@@ -104,6 +152,93 @@ public class DAO {
         values.put("GhiChu",ncc.getGhiChu());
         return db.insert("NhaCungCap",null,values);
     }
+    public int Update_ncc(NhaCungCap ncc){
+        ContentValues values = new ContentValues();
+        values.put("MaNCC",ncc.getMancc());
+        values.put("TenNCC",ncc.getTen());
+        values.put("DiaChi",ncc.getDiaChi());
+        values.put("DienThoai",ncc.getSoDienThoai());
+        values.put("Email",ncc.getEmail());
+        values.put("GhiChu",ncc.getGhiChu());
+        return db.update("NhaCungCap",values,"MaNCC=?",new String[]{ncc.getMancc()});
+    }
+    public int delete_ncc(NhaCungCap ncc){
+        return db.delete("NhaCungCap","MaNCC=?",new String[]{ncc.getMancc()});
+    }
 
->>>>>>> e4fb54af6914fb8d7ea40bcb64714b840537a4d6
+    //KHACH HANG
+
+    public void add_khachhang(Khach_hang kh)
+    {
+        ContentValues values = new ContentValues();
+        values.put("MaKH",kh.getMa());
+        values.put("TenKH",kh.getTen());
+        values.put("SDT",kh.getSdt());
+        values.put("Email",kh.getEmail());
+        values.put("DiaChi",kh.getDiachi());
+        db.insert("KhachHang",null,values);
+    }
+    public void update_khachhang(Khach_hang kh)
+    {
+        ContentValues values = new ContentValues();
+        values.put("MaKH",kh.getMa());
+        values.put("TenKH",kh.getTen());
+        values.put("SDT",kh.getSdt());
+        values.put("Email",kh.getEmail());
+        values.put("DiaChi",kh.getDiachi());
+        db.update("KhachHang",values,"MaKH = ?", new String[]{kh.getMa()});
+    }
+    public int delete_khachhang(Khach_hang kh)
+    {
+        return db.delete("KhachHang","Makh = ?", new String[]{kh.getMa()});
+    }
+    public ArrayList<Khach_hang> select_khachhang()
+    {
+        ArrayList<Khach_hang> arrayList = new ArrayList<>();
+        Cursor cursor = db.rawQuery("select * from KhachHang",null);
+        cursor.moveToFirst();
+        while (cursor.isAfterLast()==false)
+        {
+            String ma,ten,sdt,email,diachi;
+            ma = cursor.getString(0);
+            ten = cursor.getString(1);
+            sdt = cursor.getString(2);
+            email = cursor.getString(3);
+            diachi = cursor.getString(4);
+            arrayList.add(new Khach_hang(ma,ten,sdt,email,diachi));
+            cursor.moveToNext();
+        }
+        cursor.close();
+        return arrayList;
+    }
+
+
+
+                                        ///  QUẢN LÝ LAPTOP ///
+    /// THÊM LAPTOP
+    public long themLapTop(){
+        return 0;
+    }
+    /// SỬA LAPTOP
+    /// XÓA LAPTOP
+    /// Lấy laptop
+    public ArrayList<Laptop> select_Laptop(){
+        ArrayList<Laptop> dsLapTop = new ArrayList<>();
+        Cursor c = db.rawQuery("Select * from Laptop",null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false){
+            String maLapTop,tenLapTop,maNCC;
+            Double gia;
+            int soLuong;
+            maLapTop = c.getString(0);
+            tenLapTop = c.getString(1);
+            gia = c.getDouble(2);
+            soLuong = c.getInt(3);
+            maNCC = c.getString(4);
+            dsLapTop.add(new Laptop(maLapTop,tenLapTop,soLuong,gia,maNCC));
+            c.moveToNext();
+        }
+        c.close();
+        return dsLapTop;
+    }
 }
