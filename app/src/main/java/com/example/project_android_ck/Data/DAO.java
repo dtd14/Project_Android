@@ -94,7 +94,6 @@ public class DAO {
     }
     public int updateChiTietDonHang(ChiTiet ct){
         ContentValues values = new ContentValues();
-        values.put("MaDH",ct.getMaDH());
         values.put("MaLaptop",ct.getMaLaptop());
         values.put("SoLuong",ct.getSoLuong());
         values.put("DonGia",ct.getDonGia());
@@ -105,6 +104,11 @@ public class DAO {
     //Xóa Đơn Hàng
     public int xoaDonHang(String MaDH){
         return db.delete("DonHang","MaDH = ?",new String[]{MaDH});
+    }
+
+    // Xóa chi tiet don hang
+    public int xoaChiTietDonHang(String MaDH){
+        return db.delete("ChiTietDonHang","MaDH = ?",new String[]{MaDH});
     }
     /// Lấy mãkhacschs hàng theo teen
     public String layMaKhachHangTheoTen(String tenKH) {

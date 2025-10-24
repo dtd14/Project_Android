@@ -165,6 +165,7 @@ public class ThemDonHang extends Activity {
                 else {
                     Toast.makeText(ThemDonHang.this,"Thêm thất bại",Toast.LENGTH_LONG).show();
                 }
+                finish();
             }
 
         });

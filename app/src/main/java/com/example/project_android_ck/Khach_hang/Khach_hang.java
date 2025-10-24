@@ -51,4 +51,7 @@ public class Khach_hang {
     public void setDiachi(String diachi) {
         this.diachi = diachi;
     }
+    public String toString() {
+        return ten;  // hiển thị tên trong AutoComplete
+    }
 }

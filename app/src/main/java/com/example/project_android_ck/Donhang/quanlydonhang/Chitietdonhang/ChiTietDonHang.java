@@ -133,6 +133,8 @@ public class ChiTietDonHang extends AppCompatActivity {
                 Laptop lt = (Laptop) spLapTop.getSelectedItem();
                 String maLaptop = lt.getMaLapTop();
 
+
+
                 // Lấy mã khách hàng theo tên
                 String maKH = dao.layMaKhachHangTheoTen(tenkh);
                 if (maKH == null) {
@@ -142,7 +144,6 @@ public class ChiTietDonHang extends AppCompatActivity {
 
                 // Cập nhật đơn hàng
                 dao.updateDonHang(new DonHang(madh, maKH, ngaylap, tongtien, mota));
-
                 // Cập nhật chi tiết đơn hàng
                 dao.updateChiTietDonHang(new ChiTiet(madh, maLaptop, sluong, gia));
                 finish();

@@ -65,6 +65,7 @@
                 android:layout_marginLeft="30dp"
                 android:layout_height="wrap_content"
                 android:spinnerMode="dropdown"
+                android:background="@android:drawable/edit_text"
                 />
         </LinearLayout>
 
