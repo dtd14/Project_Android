@@ -27,7 +27,6 @@ public class MainLaptop extends Activity {
     private DAO dao;
     private LaptopAdapter adapter;
     private ArrayList<Laptop> listlaptop;
-    private SearchView searchViewlaptop ;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -35,25 +34,10 @@ public class MainLaptop extends Activity {
         setContentView(R.layout.quanlylaptop_activity);
 
         dao = new DAO(this);
-        SearchView searchView = findViewById(R.id.sv_qllt);
         lvlt = findViewById(R.id.lv_qllt);
         imgthemlt = findViewById(R.id.ibtn_themlt);
-        searchViewlaptop = findViewById(R.id.sv_qllt);
-        searchViewlaptop.setIconifiedByDefault(false);
-        searchViewlaptop.setQueryHint("Tìm kiếm");
-        searchViewlaptop.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
-            @Override
-            public boolean onQueryTextChange(String newText) {
-                performSearch(newText);
-                return true;
-            }
+        SearchView searchViewlaptop = findViewById(R.id.srv_qllt);
 
-            @Override
-            public boolean onQueryTextSubmit(String query) {
-                performSearch(query);
-                return true;
-            }
-        });
 
         // Lấy dữ liệu từ DB
         listlaptop = dao.select_Laptop();
@@ -71,20 +55,37 @@ public class MainLaptop extends Activity {
 
         // Đăng ký context menu
         registerForContextMenu(lvlt);
+
+
+        searchViewlaptop.setIconifiedByDefault(false);
+        searchViewlaptop.setQueryHint("Tìm kiếm");
+        searchViewlaptop.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                performSearch(query);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                performSearch(newText);
+                return true;
+            }
+        });
     }
 
     private void performSearch(String keywork) {
         ArrayList<Laptop> result = new ArrayList<>();
-        if(keywork.trim().isEmpty()){
+        if (keywork.trim().isEmpty()) {
             result = dao.select_Laptop();
-        }else{
+        } else {
             result = dao.search_laptop(keywork);
         }
         listlaptop = result;
-        adapter = new LaptopAdapter(this,R.layout.item_quanlylaptop,listlaptop);
+        adapter = new LaptopAdapter(this, R.layout.item_quanlylaptop, listlaptop);
         lvlt.setAdapter(adapter);
-    }
 
+    }
 
     @Override
     protected void onResume() {
@@ -105,7 +106,7 @@ public class MainLaptop extends Activity {
     public boolean onContextItemSelected(@NonNull MenuItem item) {
         AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
         final int position = info.position;
-        final Laptop laptop = listlaptop.get(position);
+        final Laptop laptop = listlaptop.get(position); // THÊM final
 
         if(item.getItemId() == R.id.item_sualt)
         {
@@ -150,5 +151,4 @@ public class MainLaptop extends Activity {
 
         return super.onContextItemSelected(item);
     }
-
 }

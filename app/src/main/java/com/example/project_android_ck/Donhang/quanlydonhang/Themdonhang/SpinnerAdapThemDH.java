@@ -14,7 +14,7 @@ import com.example.project_android_ck.R;
 import java.util.ArrayList;
 
 public class SpinnerAdapThemDH extends BaseAdapter {
-    private ArrayList<Laptop> danhsachlaptop = new ArrayList<>();
+    private ArrayList<Laptop> danhsachlaptop;
     //Context trong Android có thể hiểu là “ngữ cảnh” hay “môi trường đang chạy của ứng dụng”.
     //Nó giúp bạn truy cập đến các tài nguyên (resource), layout, thông tin ứng dụng, và các dịch vụ hệ thống.
     //Ví dụ, nhờ context bạn có thể:
@@ -24,11 +24,11 @@ public class SpinnerAdapThemDH extends BaseAdapter {
     //Hiển thị Toast.makeText(context, "Xin chào", Toast.LENGTH_SHORT).show().
     //Nếu không có context, các lệnh này không biết đang chạy trong màn hình nào, ứng dụng nào → sẽ bị lỗi.
     private Context context;
-    private ArrayList<Khach_hang> dskh = new ArrayList<>();
+    private ArrayList<Khach_hang> dskh;
 
-    public SpinnerAdapThemDH( Context context,ArrayList<Laptop> danhsachlaptop) {
+    public SpinnerAdapThemDH( Context context) {
         this.context = context;
-        this.danhsachlaptop = danhsachlaptop;
+        danhsachlaptop = new ArrayList<>();
     }
 
     @Override

@@ -14,6 +14,12 @@
         <activity
             android:name=".Donhang.quanlydonhang.Chitietdonhang.ChiTietDonHang"/>
         <activity
+            android:name=".Donhang.quanlydonhang.Themdonhang.ThemDonHang"
+            android:exported="false"/>
+        <activity android:name=".Khach_hang.chitiet_qlkh"
+            />
+            />
+        <activity
             android:name=".Quanlylaptop.MainLaptop"
             android:exported="true">
             <intent-filter>
@@ -22,8 +28,8 @@
             </intent-filter>
         </activity>
         <activity android:name=".Khach_hang.quanlykhachhang"></activity>
-        <activity android:name=".Quanlylaptop.AddLaptop" />
         <activity android:name=".Quanlylaptop.Update_Sanpham_Laptop"></activity>
+        <activity android:name=".Quanlylaptop.AddLaptop"></activity>
     </application>
 
 </manifest>

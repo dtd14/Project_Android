@@ -218,7 +218,17 @@ public class DAO {
         cursor.close();
         return arrayList;
     }
-    /// laptop
+
+
+
+                                        ///  QUẢN LÝ LAPTOP ///
+    /// THÊM LAPTOP
+    public long themLapTop(){
+        return 0;
+    }
+    /// SỬA LAPTOP
+    /// XÓA LAPTOP
+    /// Lấy laptop
     public ArrayList<Laptop> select_Laptop(){
         ArrayList<Laptop> dsLapTop = new ArrayList<>();
         Cursor c = db.rawQuery("Select * from Laptop",null);

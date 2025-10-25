@@ -37,7 +37,6 @@ public class AddLaptop extends AppCompatActivity {
 
         dao = new DAO(this);
         dsMaNCC = dao.getDanhSachMaNCC();
-
         ArrayAdapter<String> adapma = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, dsMaNCC);
         sp_mancc.setAdapter(adapma);
 
