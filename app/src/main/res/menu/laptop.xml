@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:title="Sửa thông tin"
+        android:id="@+id/item_sualt"></item>
+    <item
+        android:title="Xóa Laptop"
+        android:id="@+id/item_xoalt"></item>
+</menu>

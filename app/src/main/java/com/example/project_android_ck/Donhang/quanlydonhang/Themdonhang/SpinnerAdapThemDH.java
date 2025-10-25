@@ -1,6 +1,5 @@
-package com.example.project_android_ck.themdonhang;
+package com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -8,12 +7,14 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 
+import com.example.project_android_ck.Khach_hang.Khach_hang;
+import com.example.project_android_ck.Quanlylaptop.Laptop;
 import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
 
 public class SpinnerAdapThemDH extends BaseAdapter {
-    private ArrayList<String> danhsachlaptop = new ArrayList<>();
+    private ArrayList<Laptop> danhsachlaptop = new ArrayList<>();
     //Context trong Android có thể hiểu là “ngữ cảnh” hay “môi trường đang chạy của ứng dụng”.
     //Nó giúp bạn truy cập đến các tài nguyên (resource), layout, thông tin ứng dụng, và các dịch vụ hệ thống.
     //Ví dụ, nhờ context bạn có thể:
@@ -23,14 +24,11 @@ public class SpinnerAdapThemDH extends BaseAdapter {
     //Hiển thị Toast.makeText(context, "Xin chào", Toast.LENGTH_SHORT).show().
     //Nếu không có context, các lệnh này không biết đang chạy trong màn hình nào, ứng dụng nào → sẽ bị lỗi.
     private Context context;
+    private ArrayList<Khach_hang> dskh = new ArrayList<>();
 
-    public SpinnerAdapThemDH( Context context) {
+    public SpinnerAdapThemDH( Context context,ArrayList<Laptop> danhsachlaptop) {
         this.context = context;
-        danhsachlaptop.add("dell");
-        danhsachlaptop.add("asus");
-        danhsachlaptop.add("hp");
-        danhsachlaptop.add("earr");
-
+        this.danhsachlaptop = danhsachlaptop;
     }
 
     @Override
@@ -56,9 +54,9 @@ public class SpinnerAdapThemDH extends BaseAdapter {
 
         //Tìm đến cái text view có id kia rồi gán giá trị vào
         TextView t = item.findViewById(R.id.tvspinsanpham);
-
+        Laptop lt = danhsachlaptop.get(position);
         //đặt nội dung hiển thị cho TextView của từng item trong Spinner dựa trên dữ liệu ở vị trí position
-        t.setText(getItem(position).toString());
+        t.setText(lt.getTenLapTop());
         return item;
     }
 }

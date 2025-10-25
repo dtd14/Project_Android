@@ -1,15 +1,17 @@
-package com.example.project_android_ck.quanlydonhang;
+package com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.project_android_ck.Quanlylaptop.Laptop;
 import com.example.project_android_ck.R;
 
 import java.util.ArrayList;
@@ -36,31 +38,21 @@ public class CustomAdapterQuanLyDonHang extends ArrayAdapter<DonHangFull> {
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
-        TextView tvMaDH,tvTenKH,tvLapTop,tvSoluong,tvGia,tvNgaylap,tvSDT,tvEmail,tvDiachi,tvMota,tvTongtien;
+        TextView tvMaDH,tvTenKH,tvLapTop,tvNgaylap,tvTongtien;
+        Spinner splaptop;
         View itemView = LayoutInflater.from(context).inflate(R.layout.item_quanlydonhang,parent,false);
         tvMaDH = itemView.findViewById(R.id.tv_MaDH);
         tvTenKH = itemView.findViewById(R.id.tv_TenKH);
         tvLapTop = itemView.findViewById(R.id.tv_Laptop);
-        tvSoluong = itemView.findViewById(R.id.tv_Soluong);
-        tvGia = itemView.findViewById(R.id.tv_Gia);
         tvNgaylap = itemView.findViewById(R.id.tv_Ngaylap);
-        tvSDT = itemView.findViewById(R.id.tv_SDT);
-        tvEmail = itemView.findViewById(R.id.tv_Email);
-        tvDiachi= itemView.findViewById(R.id.tv_Diachi);
-        tvMota =itemView.findViewById(R.id.tv_Mota);
         tvTongtien= itemView.findViewById(R.id.tv_Tongtien);
 
+        // Đổ liệu từ ArrayList<DonHangFull> lên giao  diện
         DonHangFull dh = arrQuanLyDonHang.get(position);
         tvMaDH.setText(dh.getMaDH());
         tvTenKH.setText(dh.getHoTen());
-        tvLapTop.setText(dh.getSanPham());
-        tvSoluong.setText(String.valueOf(dh.getSoLuong()));
-        tvGia.setText(String.valueOf(dh.getGia()));
+        tvLapTop.setText(dh.getTenLapTop());
         tvNgaylap.setText(dh.getNgayLap());
-        tvSDT.setText(dh.getSoDienThoai());
-        tvEmail.setText(dh.getEmail());
-        tvDiachi.setText(dh.getDiaChi());
-        tvMota.setText(dh.getMoTa());
         tvTongtien.setText(String.valueOf(dh.getTongTien()));
         return itemView;
     }
