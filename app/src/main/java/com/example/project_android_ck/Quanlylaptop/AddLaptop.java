@@ -54,7 +54,14 @@ public class AddLaptop extends AppCompatActivity {
                         Toast.makeText(AddLaptop.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
                         return;
                     }
-
+                    if (soLuong <= 0) {
+                        Toast.makeText(AddLaptop.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
+                    if (donGia <= 0) {
+                        Toast.makeText(AddLaptop.this, "Đơn giá phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     long check = dao.themLapTop(new Laptop(maLT, tenLT, soLuong, donGia, maNCC));
 
                     if (check > 0) {
@@ -65,7 +72,7 @@ public class AddLaptop extends AppCompatActivity {
 
                     finish(); // Quay lại MainLaptop -> onResume() sẽ tự load lại dữ liệu
                 } catch (Exception e) {
-                    Toast.makeText(AddLaptop.this, "Lỗi nhập liệu!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(AddLaptop.this, "Số lượng hoặc đơn giá không hợp lệ!", Toast.LENGTH_SHORT).show();
                 }
             }
         });

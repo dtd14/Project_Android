@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "QLBanLapTop.db";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 5;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context,DB_NAME, null, DB_VERSION);
