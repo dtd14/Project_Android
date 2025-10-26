@@ -50,7 +50,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         DHFull =dao.selectThongTinDonHang();
         danhsachlaptop = dao.select_Laptop();
 
-        SpadapDH = new SpinnerAdapThemDH(ChiTietDonHang.this,danhsachlaptop);
+        SpadapDH = new SpinnerAdapThemDH(ChiTietDonHang.this);
         spLapTop.setAdapter(SpadapDH);
 
 

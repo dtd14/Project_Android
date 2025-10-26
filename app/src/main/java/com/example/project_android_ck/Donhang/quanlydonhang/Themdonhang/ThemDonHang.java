@@ -47,7 +47,7 @@ public class ThemDonHang extends Activity {
         danhsachkhachhang = dao.select_khachhang();
 
         // set spinner apdapter
-        SpinnerAdapThemDH adapThemDH = new SpinnerAdapThemDH(this,danhsachlaptop);
+        SpinnerAdapThemDH adapThemDH = new SpinnerAdapThemDH(this);
         Spin_SP.setAdapter(adapThemDH);
         Spin_SP.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override

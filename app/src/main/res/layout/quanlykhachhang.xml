@@ -4,31 +4,32 @@
     android:fitsSystemWindows="true"
     android:orientation="vertical"
     android:padding="8dp"
+    android:background="#FFFF"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Quản Lý Khách Hàng"
+        android:text="QUẢN LÝ KHÁCH HÀNG"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:layout_marginTop="10dp"
         android:textSize="30dp"
         android:id="@+id/tv_qlkh"
-        android:background="#faebd7"
-        android:padding="10dp"
-        android:textColor="#0F0E0E"
+        android:background="@drawable/border_text"
+        android:padding="20dp"
+        android:textColor="#FFF6E7"
         android:textStyle="bold"
         android:gravity="center"></TextView>
     <SearchView
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:queryHint="Tìm kiếm"
+        android:queryHint="Tìm kiếm ..."
         android:id="@+id/sv_qlkh"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="25dp"
         android:background="#EEEEEE"
         android:iconifiedByDefault="false"
         ></SearchView>
@@ -36,18 +37,19 @@
     <ListView
         android:id="@+id/lv_qlkh"
         android:layout_width="match_parent"
-        android:layout_height="420dp"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         android:layout_marginLeft="10dp"
         android:layout_marginTop="10dp"
-        android:focusable="false"
         android:layout_marginRight="10dp"
-        android:background="#A9E6E6"></ListView>
+        android:background="#E6E2C5"
+        android:focusable="false"></ListView>
 
     <ImageButton
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:id="@+id/ibtn_themkh"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginLeft="310dp"
-        android:background="@drawable/plus"></ImageButton>
+        android:background="@drawable/img_btadd_qldh"></ImageButton>
 </LinearLayout>

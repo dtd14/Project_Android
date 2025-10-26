@@ -53,6 +53,8 @@
         <activity android:name=".Khach_hang.quanlykhachhang">
         </activity>
 
+        <activity android:name=".Khach_hang.chitiet_qlkh"/>
+
 
         <activity android:name=".NhaCungCap.ThemNhacc">
         </activity>

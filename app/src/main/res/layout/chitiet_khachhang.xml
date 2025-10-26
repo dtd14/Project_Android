@@ -9,7 +9,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/themkh"
-        android:text="Sửa thông tin khách hàng"
+        android:text="Thông tin khách hàng"
         android:textSize="30dp"
         android:textStyle="bold"
         android:padding="10dp"
@@ -17,8 +17,8 @@
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
         android:gravity="center"
-        android:background="#faebd7"
-        android:textColor="#0f0e0e"></TextView>
+        android:background="#434D59"
+        android:textColor="#E1D9CC"></TextView>
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -29,10 +29,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="128dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Mã khách hàng: "
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:textStyle="italic"></TextView>
         <EditText
             android:layout_width="match_parent"
@@ -40,7 +40,7 @@
             android:id="@+id/edt_makh"
             android:hint="Mã khách hàng"
             android:layout_marginLeft="5dp"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:background="@android:drawable/edit_text"
             ></EditText>
     </LinearLayout>
@@ -53,10 +53,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="128dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Họ và tên: "
-            android:textSize="18dp"
+            android:textSize="15dp"
 
             android:textStyle="italic"></TextView>
         <EditText
@@ -65,7 +65,7 @@
             android:hint="Họ và tên"
             android:layout_marginLeft="5dp"
             android:id="@+id/edt_tenkh"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:background="@android:drawable/edit_text"
             ></EditText>
     </LinearLayout>
@@ -79,10 +79,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="128dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Số điện thoại: "
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:textStyle="italic"></TextView>
         <EditText
             android:layout_width="match_parent"
@@ -90,7 +90,7 @@
             android:layout_marginLeft="5dp"
             android:id="@+id/edt_sdt"
             android:hint="Số diện thoại"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:background="@android:drawable/edit_text"
             ></EditText>
     </LinearLayout>
@@ -103,10 +103,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="128dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Email: "
-            android:textSize="18dp"
+            android:textSize="15dp"
 
             android:textStyle="italic"></TextView>
         <EditText
@@ -115,7 +115,7 @@
             android:layout_marginLeft="5dp"
             android:id="@+id/edt_email"
             android:hint="Email"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:background="@android:drawable/edit_text"
             ></EditText>
     </LinearLayout>
@@ -128,10 +128,10 @@
         android:orientation="horizontal">
 
         <TextView
-            android:layout_width="128dp"
+            android:layout_width="110dp"
             android:layout_height="wrap_content"
             android:text="Địa chỉ: "
-            android:textSize="18dp"
+            android:textSize="15dp"
 
             android:textStyle="italic"></TextView>
         <EditText
@@ -139,7 +139,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:id="@+id/edt_diachi"
-            android:textSize="18dp"
+            android:textSize="15dp"
             android:hint="Địa chỉ"
             android:background="@android:drawable/edit_text"
             ></EditText>
@@ -155,13 +155,13 @@
             android:layout_height="60dp"
             android:layout_marginLeft="200dp"
             android:scaleType="fitXY"
-            android:src="@drawable/huy"></ImageButton>
+            android:src="@drawable/qlai"></ImageButton>
         <ImageButton
             android:id="@+id/ibtn_luu"
             android:layout_width="60dp"
             android:layout_height="60dp"
             android:layout_marginLeft="60dp"
             android:scaleType="fitXY"
-            android:src="@drawable/luu"></ImageButton>
+            android:src="@drawable/leck"></ImageButton>
     </LinearLayout>
 </LinearLayout>

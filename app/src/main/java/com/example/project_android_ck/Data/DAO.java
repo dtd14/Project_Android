@@ -115,15 +115,17 @@ public class DAO {
         c.close();
         return null;
     }
-    public void add_khachhang(Khach_hang kh)
+    public long add_khachhang(Khach_hang kh)
     {
+        long result;
         ContentValues values = new ContentValues();
         values.put("MaKH",kh.getMa());
         values.put("TenKH",kh.getTen());
         values.put("SDT",kh.getSdt());
         values.put("Email",kh.getEmail());
         values.put("DiaChi",kh.getDiachi());
-        db.insert("KhachHang",null,values);
+        result = db.insert("KhachHang",null,values);
+        return result;
     }
     public void update_khachhang(Khach_hang kh)
     {
@@ -208,6 +210,30 @@ public class DAO {
         }
         c.close();
         return dsLapTop;
+    }
+    public Laptop getLaptopById(String maLT) {
+        Cursor c = db.rawQuery("SELECT * FROM Laptop WHERE MaLaptop = ?", new String[]{maLT});
+        if (c.moveToFirst()) {
+            String maLaptop = c.getString(0);
+            String tenLaptop = c.getString(1);
+            double gia = c.getDouble(2);
+            int soLuong = c.getInt(3);
+            String maNCC = c.getString(4);
+            c.close();
+            return new Laptop(maLaptop, tenLaptop, soLuong, gia, maNCC);
+        }
+        c.close();
+        return null;
+    }
+
+    // Cập nhật thông tin laptop
+    public int updateLapTop(Laptop lt) {
+        ContentValues values = new ContentValues();
+        values.put("TenLaptop", lt.getTenLapTop());
+        values.put("Gia", lt.getGia());
+        values.put("SoLuong", lt.getSoluong());
+        values.put("MaNCC", lt.getMaNCC());
+        return db.update("Laptop", values, "MaLaptop = ?", new String[]{lt.getMaLapTop()});
     }
     // tim kiem
     public ArrayList<Laptop> search_laptop(String keywork){
