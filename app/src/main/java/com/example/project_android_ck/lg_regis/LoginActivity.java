@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.project_android_ck.Data.DAO;
 import com.example.project_android_ck.MainActivity;
+import com.example.project_android_ck.Menu_quan_ly;
 import com.example.project_android_ck.NhaCungCap.QuanLiNhaCungCap;
 import com.example.project_android_ck.R;
 
@@ -41,8 +42,8 @@ public class LoginActivity extends AppCompatActivity {
 
                 if (userDAO.checkLogin(user, pass)) {
                    Toast.makeText(LoginActivity.this, "Đăng nhập thành công!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(LoginActivity.this, QuanLiNhaCungCap.class));
-                    finish();
+                    startActivity(new Intent(LoginActivity.this, Menu_quan_ly.class));
+//                    finish();
                 } else {
                     Toast.makeText(LoginActivity.this, "Sai tài khoản hoặc mật khẩu!", Toast.LENGTH_SHORT).show();
                 }
@@ -55,5 +56,13 @@ public class LoginActivity extends AppCompatActivity {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        edtUsername.setText("");
+        edtPassword.setText("");
+        edtUsername.requestFocus();
     }
 }

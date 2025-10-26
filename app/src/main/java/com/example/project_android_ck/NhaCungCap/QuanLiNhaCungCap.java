@@ -34,7 +34,7 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
     private SearchView searchSupplier;
     private Spinner  spinner;
     private RecyclerView supplierList;
-    private Button addSupplierButton;
+    private Button addSupplierButton,outButton;
     private ArrayList<NhaCungCap> nhaCungCapList;
     private NhaCungCapAdapter adapter;
     private String selectedField ;
@@ -49,6 +49,7 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
         spinner =  findViewById(R.id.spinner_filter);
         supplierList = findViewById(R.id.supplier_list);
         addSupplierButton = findViewById(R.id.add_supplier_button);
+        outButton = findViewById(R.id.out);
         dao = new DAO(this);
 
         // Khởi tạo dữ liệu mẫu
@@ -193,8 +194,11 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
 //        Log.d("DEBUG", "Danh sach size = " + nhaCungCapList.size());
         supplierList.setAdapter(adapter);
 
-        addSupplierButton.setOnClickListener(v -> {
-            openAddSupplierForm();
+        addSupplierButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                openAddSupplierForm();
+            }
         });
         // --- Spinner chọn trường tìm ---
         ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<>(
@@ -226,6 +230,28 @@ public class QuanLiNhaCungCap extends AppCompatActivity {
             public boolean onQueryTextSubmit(String query) {
                 performSearch(query);
                 return true;
+            }
+        });
+        outButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(QuanLiNhaCungCap.this);
+                ab.setTitle("Quay Lại");
+                ab.setMessage("Bạn có muốn quay lại menu không?");
+                ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                ab.show();
+
             }
         });
 

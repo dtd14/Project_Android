@@ -22,15 +22,47 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>>
-        <activity android:name=".NhaCungCap.QuanLiNhaCungCap">
         </activity>
-        <activity android:name=".NhaCungCap.ThemNhacc">
+
+        <activity android:name=".Menu_quan_ly">
         </activity>
+
         <activity android:name=".NhaCungCap.ChiTietNhaCungCap">
         </activity>
+
+
+        <activity android:name=".Donhang.quanlydonhang.Themdonhang.ThemDonHang">
+        </activity>
+
+
+        <activity android:name=".Quanlylaptop.MainLaptop">
+        </activity>
+
+
+        <activity android:name=".Donhang.quanlydonhang.Quanlydonhang.QuanLyDonHang">
+        </activity>
+
+
         <activity android:name=".lg_regis.RegisterActivity">
         </activity>
+
+
+        <activity android:name=".NhaCungCap.QuanLiNhaCungCap">
+        </activity>
+
+        <activity android:name=".Khach_hang.quanlykhachhang">
+        </activity>
+
+
+        <activity android:name=".NhaCungCap.ThemNhacc">
+        </activity>
+
+        <activity android:name=".Quanlylaptop.AddLaptop">
+        </activity>
+
+
+
+
     </application>
 
 </manifest>

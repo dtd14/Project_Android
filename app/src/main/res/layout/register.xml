@@ -43,7 +43,7 @@
         <Button
             android:id="@+id/btnRegister"
             android:text="Đăng ký"
-            android:backgroundTint="@android:color/holo_green_dark"
+            android:backgroundTint="#2196F3"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

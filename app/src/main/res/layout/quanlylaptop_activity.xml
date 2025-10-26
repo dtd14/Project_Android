@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical"
+    android:padding="8dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Quản Lý Laptop"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:textSize="30dp"
+        android:id="@+id/tv_qllt"
+        android:background="#faebd7"
+        android:padding="10dp"
+        android:textColor="#0F0E0E"
+        android:textStyle="bold"
+        android:gravity="center">
+    </TextView>
+    <androidx.appcompat.widget.SearchView
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:queryHint="Tìm kiếm"
+        android:id="@+id/sv_qllt"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        android:background="#EEEEEE"
+        android:iconifiedByDefault="false"
+        >
+    </androidx.appcompat.widget.SearchView>
+
+    <ListView
+        android:id="@+id/lv_qllt"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:focusable="false"
+        android:layout_marginRight="10dp"
+        android:background="#A9E6E6">
+    </ListView>
+
+    <ImageButton
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:id="@+id/ibtn_themlt"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="310dp"
+        android:background="@drawable/plus">
+    </ImageButton>
+</LinearLayout>

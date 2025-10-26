@@ -135,23 +135,23 @@
             android:inputType="textCapCharacters"
             android:background="@drawable/edittext_background"
             android:layout_marginBottom="16dp"/>
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Loai San Pham"
-            android:layout_marginBottom="10dp"
-            android:textSize="20dp"
-            android:textStyle="bold">
-        </TextView>
+<!--        <TextView-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Loai San Pham"-->
+<!--            android:layout_marginBottom="10dp"-->
+<!--            android:textSize="20dp"-->
+<!--            android:textStyle="bold">-->
+<!--        </TextView>-->
 
-        <EditText
-            android:id="@+id/edit_ma_san_pham_ct"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Loai San Pham"
-            android:inputType="textCapWords"
-            android:background="@drawable/edittext_background"
-            android:layout_marginBottom="16dp"/>
+<!--        <EditText-->
+<!--            android:id="@+id/edit_ma_san_pham_ct"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:hint="Loai San Pham"-->
+<!--            android:inputType="textCapWords"-->
+<!--            android:background="@drawable/edittext_background"-->
+<!--            android:layout_marginBottom="16dp"/>-->
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

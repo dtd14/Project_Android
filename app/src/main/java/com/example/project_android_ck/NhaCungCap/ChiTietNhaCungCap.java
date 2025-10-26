@@ -19,7 +19,7 @@ public class ChiTietNhaCungCap extends AppCompatActivity {
     DAO dao;
     Toolbar toolbar;
     EditText editMaNCC, editTenNCC, editDiaChi, editSDT, editEmail,
-            editMaSP, editLoaiSP, editTenSP, editGhiChu;
+            editMaSP, editTenSP, editGhiChu;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -38,7 +38,6 @@ public class ChiTietNhaCungCap extends AppCompatActivity {
         editSDT = findViewById(R.id.edit_so_dien_thoai_ct);
         editEmail = findViewById(R.id.edit_email_ct);
         editMaSP = findViewById(R.id.edit_loai_san_pham_ct);
-        editLoaiSP = findViewById(R.id.edit_ma_san_pham_ct);
         editTenSP = findViewById(R.id.edit_ten_san_pham_ct);
         editGhiChu = findViewById(R.id.edit_ghichu_ct);
         // Nhận mã NCC
@@ -77,7 +76,6 @@ public class ChiTietNhaCungCap extends AppCompatActivity {
         editSDT.setEnabled(false);
         editEmail.setEnabled(false);
         editMaSP.setEnabled(false);
-        editLoaiSP.setEnabled(false);
         editTenSP.setEnabled(false);
         editGhiChu.setEnabled(false);
     }
