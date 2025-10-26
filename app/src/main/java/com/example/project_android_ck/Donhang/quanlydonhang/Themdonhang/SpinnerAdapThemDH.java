@@ -26,9 +26,9 @@ public class SpinnerAdapThemDH extends BaseAdapter {
     private Context context;
     private ArrayList<Khach_hang> dskh;
 
-    public SpinnerAdapThemDH( Context context) {
+    public SpinnerAdapThemDH( Context context,ArrayList<Laptop> danhsachlaptop) {
         this.context = context;
-        danhsachlaptop = new ArrayList<>();
+        this.danhsachlaptop= danhsachlaptop;
     }
 
     @Override

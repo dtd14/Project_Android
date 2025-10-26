@@ -62,6 +62,7 @@ public class AddLaptop extends AppCompatActivity {
                 else {
                     Toast.makeText(AddLaptop.this,"Thêm thất bại",Toast.LENGTH_LONG).show();
                 }
+                finish();
             }
         });
     }

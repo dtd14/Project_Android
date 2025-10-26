@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#F5F5F5"
     android:layout_margin="10dp"
-    android:padding="10dp">
+    tools:ignore="ExtraText">
 
     <!-- Thanh tiêu đề -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/tb_quanlydonhang"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#6CB3EF"
+        android:layout_height="?attr/actionBarSize"
         app:title="Quản lý đơn hàng"
-        />
+        app:titleTextColor="@android:color/white"
+        android:background="#FF6B6B"
+        android:elevation="4dp"/>
 
     <!-- Thanh tìm kiếm -->
     <SearchView
@@ -21,28 +24,36 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/tb_quanlydonhang"
-        android:layout_margin="12dp"
-        android:queryHint="Tìm kiếm đơn hàng"
+        android:layout_margin="16dp"
+        android:queryHint="Tìm kiếm đơn hàng..."
         android:iconifiedByDefault="false"
-        />
+        android:background="@android:color/white"
+        android:elevation="2dp"/>
 
     <!-- Danh sách đơn hàng -->
     <ListView
         android:id="@+id/lv_view_qldh"
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="400dp"
         android:layout_below="@id/srv_timkiemdonhang"
-        android:layout_marginTop="4dp"
-        android:background="#BAB3B3" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/white"
+        android:elevation="2dp"
+        android:divider="#E0E0E0"
+        android:dividerHeight="1dp"
+        android:padding="8dp"/>
 
     <!-- Nút thêm đơn hàng -->
     <Button
         android:id="@+id/bt_add"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_margin="20dp"
-        android:background="@drawable/img_btadd_qldh" />
+        android:layout_margin="24dp"
+        android:background="@drawable/img_btadd_qldh"
+        android:elevation="6dp"/>
 
 </RelativeLayout>

@@ -40,13 +40,13 @@ public class DAO {
         return db.insert("DonHang",null,values);
     }
     //Thêm chi tiết đơn hàng
-    public void themChiTietDonHang(String MaDH,String MaLapTop,int SoLuong,Double DonGia){
+    public long themChiTietDonHang(String MaDH,String MaLapTop,int SoLuong,Double DonGia){
         ContentValues values = new ContentValues();
         values.put("MaDH",MaDH);
         values.put("MaLaptop",MaLapTop);
         values.put("SoLuong",SoLuong);
         values.put("DonGia",DonGia);
-        db.insert("ChiTietDonHang",null,values);
+        return db.insert("ChiTietDonHang",null,values);
     }
     //Lấy thông tin đơn hàng
     public ArrayList<DonHangFull> selectThongTinDonHang(){
@@ -92,12 +92,12 @@ public class DAO {
         values.put("MoTa",dh.getMoTa());
         return db.update("DonHang",values,"MaDH = ?",new String[]{dh.getMaDH()});
     }
-    public int updateChiTietDonHang(ChiTiet ct){
+    public int updateChiTietDonHang(ChiTiet ct,String maltopcu){
         ContentValues values = new ContentValues();
         values.put("MaLaptop",ct.getMaLaptop());
         values.put("SoLuong",ct.getSoLuong());
         values.put("DonGia",ct.getDonGia());
-        return db.update("ChiTietDonHang",values,"MaDH = ? and MaLaptop = ?",new String[]{ct.getMaDH(),ct.getMaLaptop()});
+        return db.update("ChiTietDonHang",values,"MaDH = ? and MaLaptop = ?",new String[]{ct.getMaDH(),maltopcu});
     }
 
 
@@ -225,7 +225,7 @@ public class DAO {
         values.put("MaLaptop",lt.getMaLapTop());
         values.put("TenLaptop",lt.getTenLapTop());
         values.put("Gia",lt.getGia());
-        values.put("SoLuong",lt.getGia());
+        values.put("SoLuong",lt.getSoluong());
         values.put("MaNCC",lt.getMaNCC());
         return db.insert("Laptop",null,values);
     }

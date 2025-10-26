@@ -53,12 +53,14 @@ public class QuanLyDonHang extends AppCompatActivity {
         });
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
-            public boolean onQueryTextChange(String newText) {
+            public boolean onQueryTextChange(String keyword) {
+                adapter.getFilter().filter(keyword);
                 return false;
             }
 
             @Override
             public boolean onQueryTextSubmit(String query) {
+                adapter.getFilter().filter(query);
                 return false;
             }
         });

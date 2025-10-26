@@ -2,216 +2,359 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_margin="10dp"
+    android:background="#F5F5F5">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:paddingBottom="20dp">
+        android:orientation="vertical">
 
-        <!-- Tiêu đề -->
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/tb_chitietdonhang"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="#4C51BAC7"
-            android:title="Chi tiết đơn hàng" />
+            android:background="#FF6B6B"
+            app:titleTextColor="@android:color/white"
+            app:title="Chi tiết đơn hàng"/>
 
-        <!-- Mã đơn hàng -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mã đơn hàng:"
-            android:textStyle="bold"
-            android:textSize="16sp"
-            android:layout_marginTop="10dp"/>
-
-        <EditText
-            android:id="@+id/edtMaDH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="DH01"
-            android:enabled="false"
-            android:background="@android:color/transparent"/>
-
-        <!-- Tên khách hàng -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tên khách hàng:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtTenKH"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nguyễn Văn A"
-            android:enabled="false"
-            android:background="@android:color/transparent"/>
-
-        <!-- Sản phẩm -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Sản phẩm:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <Spinner
-            android:id="@+id/sp_SanPham"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="#EEEEEE"
-            android:spinnerMode="dropdown" />
-
-        <!-- Số lượng -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số lượng:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtSoLuong"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="2"
-            android:inputType="number"
-            android:background="@android:color/transparent"/>
-
-        <!-- Giá -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Giá:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtGia"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="25,000,000"
-            android:enabled="false"
-            android:background="@android:color/transparent"/>
-
-        <!-- Ngày lập -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ngày lập:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtNgayLap"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="01/10/2025"
-            android:background="@android:color/transparent"/>
-
-        <!-- SĐT -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Số điện thoại:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtSDT"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="0901234567"
-            android:enabled="false"
-            android:background="@android:color/transparent"/>
-
-        <!-- Email -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Email:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtEmail"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="abc@gmail.com"
-            android:enabled="false"
-            android:background="@android:color/transparent"/>
-
-        <!-- Địa chỉ -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Địa chỉ:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtDiaChi"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Nam Định"
-            android:enabled="false" />
-
-        <!-- Tổng tiền -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Tổng tiền:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtTongTien"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="25,000,000"
-            android:enabled="false" />
-
-        <!-- Mô tả -->
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Mô tả:"
-            android:textStyle="bold"
-            android:textSize="16sp"/>
-
-        <EditText
-            android:id="@+id/edtMoTa"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Bạn gửi vào giờ hành chính"
-            android:inputType="textMultiLine"
-            android:minLines="3"
-            android:background="#EEEEEE" />
-
-        <!-- Nút chức năng -->
+        <!-- Card cho thông tin đơn hàng -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
-            android:layout_marginTop="15dp">
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
 
-            <Button
-                android:id="@+id/btnSua"
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Sửa" />
+                android:text="THÔNG TIN ĐƠN HÀNG"
+                android:textStyle="bold"
+                android:textColor="#FF6B6B"
+                android:textSize="14sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Mã đơn hàng -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mã đơn hàng"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtMaDH"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="DH01"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <!-- Card cho thông tin khách hàng -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THÔNG TIN KHÁCH HÀNG"
+                android:textStyle="bold"
+                android:textColor="#FF6B6B"
+                android:textSize="14sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Họ tên -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Họ tên"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtTenKH"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="Nguyễn Văn A"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+
+            <!-- Số điện thoại -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số điện thoại"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtSDT"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="0901234567"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+
+            <!-- Email -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Email"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtEmail"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="abc@gmail.com"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+
+            <!-- Địa chỉ -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Địa chỉ"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtDiaChi"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:text="Nam Định"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+        </LinearLayout>
+
+        <!-- Card cho thông tin sản phẩm -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="THÔNG TIN SẢN PHẨM"
+                android:textStyle="bold"
+                android:textColor="#FF6B6B"
+                android:textSize="14sp"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Chọn sản phẩm -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sản phẩm"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <Spinner
+                android:id="@+id/sp_SanPham"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:spinnerMode="dropdown"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text" />
+
+            <!-- Giá sản phẩm -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Giá"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtGia"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="25,000,000"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666" />
+
+            <!-- Số lượng -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Số lượng"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtSoLuong"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="2"
+                android:inputType="number"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp" />
+
+            <!-- Ngày đặt -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ngày lập"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtNgayLap"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="12dp"
+                android:text="01/10/2025"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp" />
+
+            <!-- Tổng tiền -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Tổng tiền"
+                android:textStyle="bold"
+                android:textSize="15sp"
+                android:textColor="#333333" />
+
+            <EditText
+                android:id="@+id/edtTongTien"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="4dp"
+                android:text="25,000,000"
+                android:enabled="false"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:textSize="15sp"
+                android:textColor="#666666"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Card cho mô tả -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@android:color/white"
+            android:padding="16dp"
+            android:layout_marginBottom="12dp"
+            android:elevation="2dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="GHI CHÚ"
+                android:textStyle="bold"
+                android:textColor="#FF6B6B"
+                android:textSize="14sp"
+                android:layout_marginBottom="12dp" />
+
+            <EditText
+                android:id="@+id/edtMoTa"
+                android:layout_width="match_parent"
+                android:layout_height="120dp"
+                android:text="Bạn gửi vào giờ hành chính"
+                android:gravity="top|start"
+                android:padding="12dp"
+                android:background="@android:drawable/edit_text"
+                android:inputType="textMultiLine"
+                android:textSize="15sp" />
+        </LinearLayout>
+
+        <!-- Buttons -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="16dp">
 
             <Button
                 android:id="@+id/btnXoa"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:text="Xóa" />
+                android:layout_weight="1"
+                android:layout_marginEnd="8dp"
+                android:text="XÓA"
+                android:textColor="#FF6B6B"
+                android:background="@android:color/white"
+                android:elevation="2dp"
+                android:padding="12dp" />
+
+            <Button
+                android:id="@+id/btnSua"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:text="CẬP NHẬT"
+                android:textColor="#FF6B6B"
+                android:background="#4C51BAC7"
+                android:elevation="2dp"
+                android:padding="12dp" />
         </LinearLayout>
     </LinearLayout>
 </ScrollView>

@@ -1,6 +1,7 @@
 package com.example.project_android_ck.Donhang.quanlydonhang.Chitietdonhang;
 
 import android.app.DatePickerDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.text.Editable;
@@ -13,6 +14,7 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.Toolbar;
 
 import androidx.annotation.Nullable;
@@ -22,6 +24,7 @@ import com.example.project_android_ck.Data.DAO;
 import com.example.project_android_ck.Donhang.quanlydonhang.Quanlydonhang.DonHangFull;
 import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.DonHang;
 import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.SpinnerAdapThemDH;
+import com.example.project_android_ck.Donhang.quanlydonhang.Themdonhang.ThemDonHang;
 import com.example.project_android_ck.Quanlylaptop.Laptop;
 import com.example.project_android_ck.R;
 
@@ -39,7 +42,8 @@ public class ChiTietDonHang extends AppCompatActivity {
     private String MaDH;
     private ArrayList<DonHang> donhang = new ArrayList<>();
     private ArrayList<Laptop> danhsachlaptop = new ArrayList<>();
-    private int vitri = 0;
+    private String malaptopcu = "";
+
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -50,7 +54,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         DHFull =dao.selectThongTinDonHang();
         danhsachlaptop = dao.select_Laptop();
 
-        SpadapDH = new SpinnerAdapThemDH(ChiTietDonHang.this);
+        SpadapDH = new SpinnerAdapThemDH(ChiTietDonHang.this,danhsachlaptop);
         spLapTop.setAdapter(SpadapDH);
 
 
@@ -77,6 +81,7 @@ public class ChiTietDonHang extends AppCompatActivity {
                 for (int i = 0;i <danhsachlaptop.size();i++){
                     if(danhsachlaptop.get(i).getTenLapTop().equals(tenlaptop)){
                         spLapTop.setSelection(i);
+                        malaptopcu = danhsachlaptop.get(i).getMaLapTop();
                         break;
                     }
                 }
@@ -89,7 +94,7 @@ public class ChiTietDonHang extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
                 Laptop lt = danhsachlaptop.get(position);
-                edt_Gia.setText(String.valueOf(lt.getGia()));
+                edt_Gia.setText(String.format("%.0f",lt.getGia()));
                 updateTongTien();
             }
 
@@ -125,28 +130,63 @@ public class ChiTietDonHang extends AppCompatActivity {
                 String tenkh = edt_KhachHang.getText().toString().trim();
                 String ngaylap = edt_NgayLap.getText().toString().trim();
                 String mota = edt_MoTa.getText().toString().trim();
+                String soluongStr = edt_SoLuong.getText().toString().trim();
+                String giaStr = edt_Gia.getText().toString().trim();
 
-                int sluong = Integer.parseInt(edt_SoLuong.getText().toString().trim());
-                double gia = Double.parseDouble(edt_Gia.getText().toString().trim());
-                double tongtien = sluong * gia;
-
-                Laptop lt = (Laptop) spLapTop.getSelectedItem();
-                String maLaptop = lt.getMaLapTop();
-
-
-
-                // Lấy mã khách hàng theo tên
-                String maKH = dao.layMaKhachHangTheoTen(tenkh);
-                if (maKH == null) {
-                    Toast.makeText(ChiTietDonHang.this, "Không tìm thấy khách hàng: " + tenkh, Toast.LENGTH_SHORT).show();
+                if (madh.isEmpty() || tenkh.isEmpty() || ngaylap.isEmpty() ||
+                        soluongStr.isEmpty() || giaStr.isEmpty()) {
+                    Toast.makeText(ChiTietDonHang.this, "Vui lòng nhập đầy đủ thông tin",
+                            Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                // Cập nhật đơn hàng
-                dao.updateDonHang(new DonHang(madh, maKH, ngaylap, tongtien, mota));
-                // Cập nhật chi tiết đơn hàng
-                dao.updateChiTietDonHang(new ChiTiet(madh, maLaptop, sluong, gia));
-                finish();
+                AlertDialog.Builder ab = new AlertDialog.Builder(ChiTietDonHang.this);
+                ab.setTitle("Xác nhận");
+                ab.setMessage("Bạn có muốn cập nhật đơn hàng?");
+                ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        int sluong = Integer.parseInt(edt_SoLuong.getText().toString().trim());
+                        double gia = Double.parseDouble(edt_Gia.getText().toString().trim());
+                        double tongtien = sluong * gia;
+
+                        Laptop lt = (Laptop) spLapTop.getSelectedItem();
+                        String maLaptopmoi = lt.getMaLapTop();
+
+
+                        // Lấy mã khách hàng theo tên
+                        String maKH = dao.layMaKhachHangTheoTen(tenkh);
+                        if (maKH == null) {
+                            Toast.makeText(ChiTietDonHang.this, "Không tìm thấy khách hàng: " + tenkh, Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        // Cập nhật đơn hàng
+                        int check = dao.updateDonHang(new DonHang(madh, maKH, ngaylap, tongtien, mota));
+                        // Cập nhật chi tiết đơn hàng
+                        int checkct =dao.updateChiTietDonHang(new ChiTiet(madh, maLaptopmoi, sluong, gia),malaptopcu);
+
+                        if (check > 0 && checkct > 0) {
+                            Toast.makeText(ChiTietDonHang.this,
+                                    "Cập nhật đơn hàng thành công",
+                                    Toast.LENGTH_LONG).show();
+                            finish();
+                        }
+                        else {
+                            Toast.makeText(ChiTietDonHang.this, "Cập nhật thất bại",
+                                    Toast.LENGTH_SHORT).show();
+                        }
+                        finish();
+                    }
+                });
+                ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+                ab.show();
             }
         });
 
@@ -154,8 +194,33 @@ public class ChiTietDonHang extends AppCompatActivity {
         bt_Xoa.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                dao.xoaDonHang(MaDH);
-                finish();
+
+                AlertDialog.Builder ab = new AlertDialog.Builder(ChiTietDonHang.this);
+
+                ab.setTitle("Xác nhận");
+                ab.setMessage("Bạn có muốn xóa đơn hàng");
+                ab.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        int check = dao.xoaDonHang(MaDH);
+                        if (check >0){
+                            Toast.makeText(ChiTietDonHang.this,"Xóa thành công",Toast.LENGTH_LONG).show();
+                        }
+                        else {
+                            Toast.makeText(ChiTietDonHang.this,"Xóa thất bại",Toast.LENGTH_LONG).show();
+                        }
+                        finish();
+                    }
+                });
+                ab.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.dismiss();
+                    }
+                });
+
+                ab.show();
             }
         });
 
@@ -181,8 +246,15 @@ public class ChiTietDonHang extends AppCompatActivity {
     public void updateTongTien(){
         String gia = edt_Gia.getText().toString().trim();
         String soluong = edt_SoLuong.getText().toString().trim();
-        if(!gia.isEmpty()&&!soluong.isEmpty()){
-            edt_TongTien.setText(String.valueOf(Integer.parseInt(soluong)* Double.parseDouble(gia)));
+        if (!gia.isEmpty()&& !soluong.isEmpty()){
+            try {
+                Double g = Double.parseDouble(gia);
+                int sl = Integer.parseInt(soluong);
+                edt_TongTien.setText(String.format("%.0f", g*sl));
+            } catch (NumberFormatException e) {
+                Toast.makeText(ChiTietDonHang.this, "Vui lòng nhập số hợp lệ", Toast.LENGTH_SHORT).show();
+                edt_TongTien.setText("");
+            }
         }
         else {
             edt_TongTien.setText("");
@@ -203,5 +275,7 @@ public class ChiTietDonHang extends AppCompatActivity {
         bt_Sua = findViewById(R.id.btnSua);
         bt_Xoa = findViewById(R.id.btnXoa);
         tb_ChiTietDonHang = findViewById(R.id.tb_chitietdonhang);
+        setSupportActionBar(tb_ChiTietDonHang);
+        getSupportActionBar().setTitle("Chi tiết đơn hàng");
     }
 }

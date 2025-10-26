@@ -49,5 +49,13 @@ public class MainLaptop extends Activity {
                 startActivity(i);
             }
         });
+
+    }
+    protected void onResume() {
+        super.onResume();
+        // Tải lại dữ liệu mới nhất từ DB
+        listlaptop = dao.select_Laptop();
+        LaptopAdapter adapter = new LaptopAdapter(this, R.layout.item_quanlylaptop, listlaptop);
+        lvlt.setAdapter(adapter);
     }
 }
