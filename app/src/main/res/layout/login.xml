@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="24dp"
+    android:background="@android:color/background_light"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:text="Đăng nhập"
+        android:textSize="26sp"
+        android:textStyle="bold"
+        android:layout_marginBottom="24dp"
+        android:gravity="center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/edtUsername"
+        android:hint="Tên đăng nhập"
+        android:drawableStart="@android:drawable/ic_menu_info_details"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"/>
+
+    <EditText
+        android:id="@+id/edtPassword"
+        android:hint="Mật khẩu"
+        android:inputType="textPassword"
+        android:drawableStart="@android:drawable/ic_lock_lock"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:layout_marginTop="12dp"/>
+
+    <Button
+        android:id="@+id/btnLogin"
+        android:text="Đăng nhập"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:textColor="@android:color/white"
+        android:layout_marginTop="20dp"/>
+
+    <TextView
+        android:id="@+id/tvRegister"
+        android:text="Chưa có tài khoản? Đăng ký ngay"
+        android:textColor="@android:color/holo_blue_dark"
+        android:layout_marginTop="12dp"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.ContextMenu;
+import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -14,6 +15,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ListView;
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -22,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project_android_ck.Data.DAO;
 
 import com.example.project_android_ck.R;
+import com.example.project_android_ck.lg_regis.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -36,6 +39,7 @@ public class quanlykhachhang extends Activity {
         setContentView(R.layout.quanlykhachhang);
         dao = new DAO(quanlykhachhang.this);
         ImageButton them;
+        SearchView sv = findViewById(R.id.sv_qlkh);
         lv_qlkh = findViewById(R.id.lv_qlkh);
         arr = new ArrayList<>();
 
@@ -43,11 +47,41 @@ public class quanlykhachhang extends Activity {
         registerForContextMenu(lv_qlkh);
         them = findViewById(R.id.ibtn_themkh);
 
+        sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                adap.getFilter().filter(newText);
+                return true;
+            }
+
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+        });
+
         them.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent it = new Intent (quanlykhachhang.this, chitiet_qlkh.class);
                 startActivity(it);
+            }
+        });
+        ImageButton out = findViewById(R.id.out_kh);
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
+                ab.setTitle("Thoát");
+                ab.setMessage("Bạn có chắc chắn muốn thoát ?");
+                ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                ab.setNegativeButton("Không", null);
+                ab.show();
             }
         });
     }
@@ -91,7 +125,6 @@ public class quanlykhachhang extends Activity {
             sdt.setText(kh.getSdt());
             email.setText(kh.getEmail());
             diachi.setText(kh.getDiachi());
-            ten.requestFocus();
             huy.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -111,24 +144,36 @@ public class quanlykhachhang extends Activity {
             luu.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
-                    ab.setTitle("Thông báo !");
-                    ab.setMessage("Cập nhật khách hàng này ?");
-                    ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
-                        @Override
-                        public void onClick(DialogInterface dialog, int which) {
-                            dao.update_khachhang(new Khach_hang(ma.getText().toString(),ten.getText().toString(),sdt.getText().toString(),email.getText().toString(),diachi.getText().toString()));
-                            dl.dismiss();
-                            AlertDialog.Builder success = new AlertDialog.Builder(quanlykhachhang.this);
-                            success.setTitle("Thành công!");
-                            success.setMessage("Đã cập nhật khách hàng!");
-                            success.setPositiveButton("OK", null);
-                            success.show();
-                            getlistview_khachhang();
-                        }
-                    });
-                    ab.setNegativeButton("Không", null);
-                    ab.show();
+                    if (ma.getText().toString().trim().isEmpty() ||
+                            ten.getText().toString().trim().isEmpty() ||
+                            sdt.getText().toString().trim().isEmpty() ||
+                            diachi.getText().toString().trim().isEmpty() ||
+                            email.getText().toString().trim().isEmpty()) {
+                        AlertDialog.Builder success = new AlertDialog.Builder(quanlykhachhang.this);
+                        success.setTitle("Cảnh báo!");
+                        success.setMessage("Hãy điền đầy đủ thông tin!");
+                        success.setPositiveButton("OK", null);
+                        success.show();
+                    } else {
+                        AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
+                        ab.setTitle("Thông báo !");
+                        ab.setMessage("Cập nhật khách hàng này ?");
+                        ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialog, int which) {
+                                dao.update_khachhang(new Khach_hang(ma.getText().toString(), ten.getText().toString(), sdt.getText().toString(), email.getText().toString(), diachi.getText().toString()));
+                                dl.dismiss();
+                                AlertDialog.Builder success = new AlertDialog.Builder(quanlykhachhang.this);
+                                success.setTitle("Thành công!");
+                                success.setMessage("Đã cập nhật khách hàng!");
+                                success.setPositiveButton("OK", null);
+                                success.show();
+                                getlistview_khachhang();
+                            }
+                        });
+                        ab.setNegativeButton("Không", null);
+                        ab.show();
+                    }
                 }
             });
             dl.show();

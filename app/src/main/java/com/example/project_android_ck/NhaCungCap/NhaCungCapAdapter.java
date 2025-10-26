@@ -25,6 +25,8 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
     public interface OnItemClickListener {
         void onDeleteClick(NhaCungCap ncc);
         void onUpdateClick(NhaCungCap ncc);
+        void onDetailClick(NhaCungCap ncc);
+        void onRestoreClick(NhaCungCap ncc);
     }
 
     public NhaCungCapAdapter(Context context, ArrayList<NhaCungCap> nhaCungCapList ,OnItemClickListener listener) {
@@ -43,9 +45,9 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
     public void onBindViewHolder(final ViewHolder holder, int position) {
         Log.d("DEBUG", "onBindViewHolder: Gắn dữ liệu cho item ở vị trí " + position);
         NhaCungCap nhaCungCap = nhaCungCapList.get(position);
-        holder.txtTen.setText(nhaCungCap.getTen());
-        holder.txtdiachi.setText(nhaCungCap.getEmail());// Sử dụng email làm thông tin thứ hai
-        holder.Sodt.setText(nhaCungCap.getSoDienThoai());
+        holder.txtTen.setText(nhaCungCap.getMancc());
+        holder.txtdiachi.setText(nhaCungCap.getTen());// Sử dụng email làm thông tin thứ hai
+        holder.Sodt.setText(nhaCungCap.getDiaChi());
         holder.deleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -57,12 +59,30 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
             }
         });
 
-        holder.restoreButton.setOnClickListener(new View.OnClickListener() {
+        holder.onUpdateClick.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 int currentPosition = holder.getBindingAdapterPosition();
                 if (currentPosition != RecyclerView.NO_POSITION && listener != null) {
                     listener.onUpdateClick(nhaCungCapList.get(currentPosition));
+                }
+            }
+        });
+        holder.detailButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = holder.getBindingAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onDetailClick(nhaCungCapList.get(currentPosition));
+                }
+            }
+        });
+        holder.restoreButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = holder.getBindingAdapterPosition();
+                if (currentPosition != RecyclerView.NO_POSITION && listener != null) {
+                    listener.onRestoreClick(nhaCungCapList.get(currentPosition));
                 }
             }
         });
@@ -83,6 +103,8 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
         public TextView txtdiachi;
         public TextView Sodt;
         public ImageButton deleteButton;
+        public ImageButton onUpdateClick;
+        public ImageButton detailButton;
         public ImageButton restoreButton;
 
         public ViewHolder(View itemView) {
@@ -92,7 +114,10 @@ public class NhaCungCapAdapter extends RecyclerView.Adapter<NhaCungCapAdapter.Vi
             Sodt = itemView.findViewById(R.id.txt_sodt);
 
             deleteButton = itemView.findViewById(R.id.delete_button);
+            onUpdateClick = itemView.findViewById(R.id.btn_sua);
+            detailButton = itemView.findViewById(R.id.btn_xemchitiet);
             restoreButton = itemView.findViewById(R.id.restore_button);
+
         }
     }
 }

@@ -16,6 +16,7 @@
         app:title="Quản lý đơn hàng"
         app:titleTextColor="@android:color/white"
         android:background="#FF6B6B"
+        android:gravity="center"
         android:elevation="4dp"/>
 
     <!-- Thanh tìm kiếm -->
@@ -46,6 +47,13 @@
         android:padding="8dp"/>
 
     <!-- Nút thêm đơn hàng -->
+    <Button
+        android:id="@+id/bt_out"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_margin="24dp"
+        android:background="@drawable/img_7" />
     <Button
         android:id="@+id/bt_add"
         android:layout_width="56dp"

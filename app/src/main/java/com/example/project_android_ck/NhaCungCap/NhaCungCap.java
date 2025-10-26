@@ -7,6 +7,9 @@ public class NhaCungCap {
     private String soDienThoai;
     private String email;
     private String ghiChu;
+//    private String Masp;
+//    private String LoaiSp;
+//    private String TenSp;
 
     public NhaCungCap(String Mancc,String ten, String diaChi, String soDienThoai, String email, String ghiChu) {
         this.Mancc = Mancc;
