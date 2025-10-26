@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:padding="10dp"
-    android:background="#37948F8F"
+    android:background="#F4F7FA"
     >
     <TextView
         android:layout_width="match_parent"
@@ -14,7 +14,8 @@
         android:textStyle="bold"
         android:textSize="20dp"
         android:gravity="center"
-        android:background="#03A9F4"
+        android:textColor="#FFFFFF"
+        android:background="#0A84FF"
         />
     <LinearLayout
         android:layout_width="match_parent"
@@ -25,12 +26,14 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
+            android:textColor="#1F2D3D"
             android:text="Mã Nhà cung cấp"
             />
         <Spinner
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/spn_ncc"
+            android:textSize="16sp"
             android:background="@android:drawable/edit_text"
             />
     </LinearLayout>
@@ -44,11 +47,13 @@
             android:layout_height="wrap_content"
             android:textSize="17dp"
             android:text="Mã Laptop"
+            android:textColor="#1F2D3D"
             />
         <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:id="@+id/edit_malaptop"
+
             android:background="@android:drawable/edit_text"
             />
     </LinearLayout>
@@ -61,7 +66,8 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textSize="17dp"
-            android:text="Tên laptop"
+            android:text="Tên Laptop"
+            android:textColor="#1F2D3D"
             />
         <EditText
             android:layout_width="match_parent"
@@ -80,6 +86,7 @@
             android:layout_height="wrap_content"
             android:textSize="17dp"
             android:text="Số lượng"
+            android:textColor="#1F2D3D"
             />
         <EditText
             android:layout_width="match_parent"
@@ -98,6 +105,7 @@
             android:layout_height="wrap_content"
             android:textSize="17dp"
             android:text="Đơn giá"
+            android:textColor="#1F2D3D"
             />
         <EditText
             android:layout_width="match_parent"
@@ -111,6 +119,9 @@
         android:layout_height="wrap_content"
         android:id="@+id/bt_themlaptop"
         android:text="Thêm laptop"
+        android:textColor="#FFFFFF"
+        android:textStyle="bold"
+        android:backgroundTint="#0A84FF"
         />
 
 </LinearLayout>

@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     public static final String DB_NAME = "QLBanLapTop.db";
-    public static final int DB_VERSION = 2;
+    public static final int DB_VERSION = 4;
 
     public DataBaseHelper(@Nullable Context context) {
         super(context,DB_NAME, null, DB_VERSION);
@@ -23,6 +23,13 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         //  Bảng NhaCungCap
         db.execSQL("CREATE TABLE IF NOT EXISTS NhaCungCap (" +
+                "MaNCC TEXT PRIMARY KEY, " +
+                "TenNCC TEXT NOT NULL, " +
+                "DiaChi TEXT, " +
+                "DienThoai TEXT, " +
+                "Email TEXT,"+
+                "GhiChu TEXT)");
+        db.execSQL("CREATE TABLE IF NOT EXISTS Backup_NhaCungCap  (" +
                 "MaNCC TEXT PRIMARY KEY, " +
                 "TenNCC TEXT NOT NULL, " +
                 "DiaChi TEXT, " +
@@ -65,8 +72,11 @@ public class DataBaseHelper extends SQLiteOpenHelper {
                 "PRIMARY KEY (MaDH, MaLaptop), " +
                 "FOREIGN KEY (MaDH) REFERENCES DonHang(MaDH) ON DELETE CASCADE, " +
                 "FOREIGN KEY (MaLaptop) REFERENCES Laptop(MaLaptop) ON DELETE CASCADE)");
-
+        // Bảng login
+        db.execSQL("CREATE TABLE IF NOT EXISTS Users(username TEXT PRIMARY KEY, password TEXT)");
     }
+
+
 
 
     @Override
@@ -77,6 +87,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS Laptop");
         db.execSQL("DROP TABLE IF EXISTS NhaCungCap");
         db.execSQL("DROP TABLE IF EXISTS KhachHang");
+        db.execSQL("DROP TABLE IF EXISTS Backup_NhaCungCap");
+        db.execSQL("Drop table if Exists Users");
         // Tạo lại bảng
         onCreate(db);
     }

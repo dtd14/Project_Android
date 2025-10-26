@@ -12,9 +12,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Quản lý nhà cung cấp"
-        android:background="#03A9F4"
-        android:textSize="20sp"
+        android:background="@drawable/background_textview"
+        android:textSize="30dp"
         android:textStyle="bold"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
         android:gravity="center"
         android:layout_marginBottom="16dp"/>
     <LinearLayout
@@ -33,7 +35,6 @@
             android:layout_weight="1"
             android:layout_height="wrap_content"
             android:background="#E4D2D2"
-            android:queryHint="Nhập từ khóa tìm kiếm..."
             android:iconifiedByDefault="false"
             android:layout_marginBottom="8dp"/>
     </LinearLayout>
@@ -44,12 +45,24 @@
         android:layout_height="0dp"
         android:layout_weight="1" />
 
-    <Button
-        android:id="@+id/add_supplier_button"
-        android:layout_width="50dp"
-        android:layout_height="50dp"
-        android:background="@drawable/img_btadd_qldh"
-        app:backgroundTint="@null"
-        android:layout_gravity="end"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <Button
+            android:id="@+id/out"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/img_7" />
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+        <Button
+            android:id="@+id/add_supplier_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@drawable/img_btadd_qldh" />
+    </LinearLayout>
 
 </LinearLayout>

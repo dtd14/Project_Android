@@ -24,6 +24,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.project_android_ck.Data.DAO;
 
 import com.example.project_android_ck.R;
+import com.example.project_android_ck.lg_regis.LoginActivity;
 
 import java.util.ArrayList;
 
@@ -64,6 +65,23 @@ public class quanlykhachhang extends Activity {
             public void onClick(View v) {
                 Intent it = new Intent (quanlykhachhang.this, chitiet_qlkh.class);
                 startActivity(it);
+            }
+        });
+        ImageButton out = findViewById(R.id.out_kh);
+        out.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                AlertDialog.Builder ab = new AlertDialog.Builder(quanlykhachhang.this);
+                ab.setTitle("Thoát");
+                ab.setMessage("Bạn có chắc chắn muốn thoát ?");
+                ab.setPositiveButton("Có", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        finish();
+                    }
+                });
+                ab.setNegativeButton("Không", null);
+                ab.show();
             }
         });
     }

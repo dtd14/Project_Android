@@ -74,20 +74,35 @@ public class Update_Sanpham_Laptop extends AppCompatActivity {
         btSua.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String tenLT = edtTenLaptop.getText().toString().trim();
-                int soLuong = Integer.parseInt(edtSoLuong.getText().toString().trim());
-                double donGia = Double.parseDouble(edtDonGia.getText().toString().trim());
-                String maNCC = spMaNCC.getSelectedItem().toString();
+               try {
+                   String tenLT = edtTenLaptop.getText().toString().trim();
+                   int soLuong = Integer.parseInt(edtSoLuong.getText().toString().trim());
+                   double donGia = Double.parseDouble(edtDonGia.getText().toString().trim());
+                   String maNCC = spMaNCC.getSelectedItem().toString();
+                   if ( tenLT.isEmpty()) {
+                       Toast.makeText(Update_Sanpham_Laptop.this, "Vui lòng nhập đầy đủ thông tin", Toast.LENGTH_SHORT).show();
+                       return;
+                   }
+                   if (soLuong <= 0) {
+                    Toast.makeText(Update_Sanpham_Laptop.this, "Số lượng phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    return;
+                   }
+                   if (donGia <= 0) {
+                    Toast.makeText(Update_Sanpham_Laptop.this, "Đơn giá phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+                    return;
+                  }
+                  Laptop ltMoi = new Laptop(maLaptop, tenLT, soLuong, donGia, maNCC);
 
-                Laptop ltMoi = new Laptop(maLaptop, tenLT, soLuong, donGia, maNCC);
-
-                int check = dao.updateLapTop(ltMoi);
-                if (check > 0) {
+                  int check = dao.updateLapTop(ltMoi);
+                  if (check > 0) {
                     Toast.makeText(Update_Sanpham_Laptop.this, "Cập nhật thành công!", Toast.LENGTH_LONG).show();
                     finish();
-                } else {
+                  } else {
                     Toast.makeText(Update_Sanpham_Laptop.this, "Cập nhật thất bại!", Toast.LENGTH_LONG).show();
-                }
+                  }
+                  }catch (Exception e) {
+                   Toast.makeText(Update_Sanpham_Laptop.this, "Số lượng hoặc đơn giá không hợp lệ!", Toast.LENGTH_SHORT).show();
+               }
             }
         });
     }
